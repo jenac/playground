@@ -69,3 +69,7 @@ ng build && node server.js
 Navigate to http://localhost:3000
 Navigate to http://localhost:3000/api
 
+## Build docker for release
+```
+ng build -prod && docker-compose build
+```
