@@ -73,3 +73,14 @@ Navigate to http://localhost:3000/api
 ```
 ng build -prod && docker-compose build
 ```
+
+## unit test on server using mocha, chai, sinon
+```
+npm install mocha chai sinon-chai --save-dev
+```
+create test folder and common.js, mocha.opts in side the folder
+
+to watch uni test:
+```
+mocha -w
+```
