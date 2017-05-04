@@ -1,6 +1,6 @@
 import { MeanAngular2Page } from './app.po';
 
-describe('mean-angular2 App', function() {
+describe('mean-angular2 App', () => {
   let page: MeanAngular2Page;
 
   beforeEach(() => {
