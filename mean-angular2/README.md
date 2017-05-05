@@ -37,6 +37,12 @@ test/common.js
 test/mocha.opts
 ```
 
+## Add server scripts on package.json
+```
+"server-test": "mocha",
+"server-test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha"
+```
+
 ## Code structure
 * angular2 build to **dist** folder
 * server.js serving dist folder as static content.
