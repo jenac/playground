@@ -7,3 +7,19 @@ describe('Array', function() {
     });
   });
 });
+
+describe('wcf-soap', () =>{
+  it('describe soap with wsdl', () =>{
+    const soap = require('soap-as-promised');
+    
+    soap.createClient('http://192.168.1.129:8000/Ex001?wsdl')
+      .then((client) => {
+        let des = client.describe();
+        console.log(JSON.stringify(des.Ex001Service.BasicHttpBinding_IEx001Service.CallerAuthentication.input));
+        // client.myAwesomeSoapMethod({param: true})
+
+       })
+      .then((result) => console.log(`The result was: ${result}`))
+      .catch((error) => console.error(`There was an error! ${error}`));
+  });
+});
