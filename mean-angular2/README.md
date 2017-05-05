@@ -4,12 +4,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Prepare
 ```
-npm install -g angular-cli mocha istanbul
+npm install -g @angular/cli mocha istanbul
 ```
 
 ## Create project
 ```
 ng new mean-angular2
+```
+
+## Add server dependencies
+```
+npm install express body-parser --save
 ```
 
 ## Create server folders
@@ -18,6 +23,18 @@ server.js
 server/routes/api.js
 server/routes/api.spec.js
 ...
+```
+
+## Create test for mocha, server side
+```
+npm install mocha chai sinon sinon-chai istanbul --save-dev
+```
+
+## Create test folder
+```
+test
+test/common.js
+test/mocha.opts
 ```
 
 ## Code structure
