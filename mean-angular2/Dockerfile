@@ -5,7 +5,6 @@ RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
 COPY package.json /opt/app
-COPY server.js /opt/app
 ADD server /opt/app/server
 ADD dist /opt/app/dist
 
@@ -13,4 +12,4 @@ RUN npm install --production
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["node", "server/server.js"]
