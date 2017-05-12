@@ -5,4 +5,12 @@ services:
     image: 'meanangular2:1.0.0'
     ports:
       - "3000:3000"
-    # command: watch df -h
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
+  mongo:
+      image: 'mongo:3.4.4'
+      ports:
+        - "27017:27017"  

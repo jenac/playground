@@ -19,7 +19,7 @@ npm install express body-parser --save
 
 ## Create server folders
 ```
-server.js
+server/server.js
 server/routes/api.js
 server/routes/api.spec.js
 ...
@@ -33,8 +33,7 @@ npm install mocha chai sinon sinon-chai istanbul --save-dev
 ## Create test folder
 ```
 test
-test/common.js
-test/mocha.opts
+test/server.spec.js
 ```
 
 ## Add server scripts on package.json
@@ -77,7 +76,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Run node server
 ```
-node server.js
+node server/server.js
 ```
 Navigate to http://localhost:3000
 
@@ -107,9 +106,20 @@ ng build -prod && docker-compose build
 ```
 npm install mocha chai sinon-chai --save-dev
 ```
-create test folder and common.js, mocha.opts in side the folder
 
-to watch uni test:
+to uni test:
 ```
-mocha -w
+mocha --recursive
 ```
+
+install nodemon for monitor server when develop server code. (supervisor eates CPU on windows)
+```
+npm -g install nodemon
+nodemon server/server.js
+```
+
+work around on docker prod:
+```
+docker-compose up -d
+```
+wait for mongo fully startup, then restart app docker. 

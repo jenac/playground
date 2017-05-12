@@ -40,7 +40,7 @@ const server = http.createServer(app);
 server.listen(port, () => console.log(`API running on localhost:${port}`));
 
 var mongoose = require('mongoose');
-var mongoUri = 'mongodb://localhost/tools';
+var mongoUri = 'mongodb://mongo/tools';
 mongoose.connect(mongoUri);
 mongoose.connection.on('connected', function () {  
   console.log('Mongoose default connection open to ' + mongoUri);
