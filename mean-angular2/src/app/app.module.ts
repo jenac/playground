@@ -2,24 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-import { SchemaFormModule, WidgetRegistry, DefaultWidgetRegistry } from "angular2-schema-form";
-
+import { AgGridModule} from "ag-grid-angular/main";
 import { AppComponent } from './app.component';
-import { SoapuiComponent } from './soapui/soapui.component';
+import { ToolGridComponent } from './tool-grid/tool-grid.component';
+import { ToolService } from './tool.service';
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoapuiComponent
+    ToolGridComponent,
+    DeleteButtonComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    SchemaFormModule
+    AgGridModule.withComponents([DeleteButtonComponent]),
   ],
-  providers: [{provide: WidgetRegistry, useClass: DefaultWidgetRegistry}],
+  providers: [ToolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
