@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoapuiComponent } from './soapui.component';
+import { ToolGridComponent } from './tool-grid.component';
 
-describe('SoapuiComponent', () => {
-  let component: SoapuiComponent;
-  let fixture: ComponentFixture<SoapuiComponent>;
+describe('ToolGridComponent', () => {
+  let component: ToolGridComponent;
+  let fixture: ComponentFixture<ToolGridComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SoapuiComponent ]
+      declarations: [ ToolGridComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SoapuiComponent);
+    fixture = TestBed.createComponent(ToolGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
