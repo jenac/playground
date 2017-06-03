@@ -1,0 +1,9 @@
+version: "2"
+services:
+  tensorflow:
+    image: gcr.io/tensorflow/tensorflow
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+    volumes:
+      - "./:/opt/projects"
