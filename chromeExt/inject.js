@@ -7,17 +7,43 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 // this is the code which will be injected into a given page...
 
 (function () {
+    let chatRoom = $("a.title_name.ng-binding").text();
     $('div.clearfix').each(
         function () {
-            var msg = {
-                user: $(this).find("img.avatar").attr("title"),
-                sender_data: JSON.parse($(this).find("img.avatar").attr("data-cm")),
-                message: $(this).find("pre.js_message_plain.ng-binding").text(),
-                message_data: JSON.parse($(this).find("div.bubble.js_message_bubble.ng-scope").attr("data-cm")),
-                imageUrl: $(this).find("img.msg-img").attr("src") === undefined ? "": "https://web.wechat.com" + $(this).find("img.msg-img").attr("src") 
+            try {
+                var msg = {
+                    user: $(this).find("img.avatar").attr("title"),
+                    sender_data: JSON.parse($(this).find("img.avatar").attr("data-cm")),
+                    message: $(this).find("pre.js_message_plain.ng-binding").text(),
+                    message_data: JSON.parse($(this).find("div.bubble.js_message_bubble.ng-scope").attr("data-cm")),
+                    imageUrl: $(this).find("img.msg-img").attr("src") === undefined ? "" : "https://web.wechat.com" + $(this).find("img.msg-img").attr("src")
+                }
+                // console.log(msg);
+                var msgv2 = {
+                    user: msg.user,
+                    message: msg.message,
+                    imageUrl: msg.imageUrl,
+                    msgId: msg.message_data.msgId,
+                    chatRoom: chatRoom
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/messages",
+                    // The key needs to match your method's input parameter (case-sensitive).
+                    data: JSON.stringify(msgv2),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) { console.log(data); },
+                    failure: function (errMsg) {
+                        console.log(errMsg);
+                    }
+                })
+            } catch (e) {
+                console.log(e.message);
+                console.log('user ----' + $(this).find("img.avatar").attr("title"));
+                console.log('message ----' + $(this).find("pre.js_message_plain.ng-binding").text());
+                console.log('sender_data ----' + $(this).find("img.avatar").attr("data-cm"));
+                console.log('message_data ----' + $(this).find("div.bubble.js_message_bubble.ng-scope").attr("data-cm"));
             }
-            console.log(msg);
         })
-
-
 })();
