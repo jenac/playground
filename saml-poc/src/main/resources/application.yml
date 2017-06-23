@@ -1,4 +1,17 @@
+#security:
+#  ignored: /**
+#  basic:
+#    enabled: false
+
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-alias: spring
+    key-store: src/main/resources/saml/keystore.jks
+    key-store-password: secret
+
 security:
-  ignored: /**
-  basic:
-    enabled: false
+  saml2:
+      metadata-url: https://tcfbank-lchen.okta.com/app/exk8ae37sU5C4rCCl2p5/sso/saml/metadata

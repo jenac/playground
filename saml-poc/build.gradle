@@ -19,6 +19,9 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 
@@ -26,6 +29,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.springframework.security.extensions', name: 'spring-security-saml2-core', version: '1.0.2.RELEASE'
+	compile group: 'org.springframework.security.extensions', name: 'spring-security-saml-dsl', version: '1.0.0.M3'
+	
+	
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
