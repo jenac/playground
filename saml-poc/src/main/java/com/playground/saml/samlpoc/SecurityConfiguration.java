@@ -39,5 +39,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.identityProvider()
 					.metadataFilePath(metadataUrl)
 					.and();
+		http.csrf().disable();
 	}
 }
