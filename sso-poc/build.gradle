@@ -25,6 +25,13 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-ldap
+	compile group: 'org.springframework.security', name: 'spring-security-ldap', version: '4.2.3.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework.ldap/spring-ldap-core
+	compile group: 'org.springframework.ldap', name: 'spring-ldap-core', version: '2.3.1.RELEASE'
+// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+
 	compile('org.codehaus.groovy:groovy')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
