@@ -12,26 +12,30 @@ import java.util.regex.Pattern
 import java.util.stream.Collectors
 
 @Component
-class ActiveDirectoryAuthoritiesPopulator implements LdapAuthoritiesPopulator{
-    Pattern groupNamePattern
+class ActiveDirectoryAuthoritiesPopulator implements LdapAuthoritiesPopulator {
+    Map<String, List<String>> roleMap = [
+            :
+    ]
+
     @PostConstruct
     void postConstruct() {
-        groupNamePattern = Pattern.compile("something");
+        //this could load from mongodb or some configuration database
+        roleMap[AuthoritiesConstants.FINANCIAL] = ["CN=financial,OU=headquarter,DC=lhmtech,DC=io", "other financial group"]
+        roleMap[AuthoritiesConstants.DEVLOPMENT] = ["CN=r&d,OU=headquarter,DC=lhmtech,DC=io", "other marketing group"]
+        roleMap[AuthoritiesConstants.MARKETING] = ["CN=marketing,OU=headquarter,DC=lhmtech,DC=io"]
     }
+
     @Override
     Collection<? extends GrantedAuthority> getGrantedAuthorities(DirContextOperations userData, String username) {
+        Set<GrantedAuthority> result = new HashSet<>()
         if (userData.attributeExists("memberOf")) {
             String[] groups = userData.getStringAttributes("memberOf");
-
-            return Arrays.stream(groups)
-                    .filter({ group -> StringUtils.contains(group, "SOME_HERE")})
-                    .map({group -> groupNamePattern.matcher(group)})
-                    .filter({matcher -> matcher.matches()})
-                    .map({matcher -> matcher.group(1).toUpperCase()})
-                    .map({role -> new SimpleGrantedAuthority("ROLE_" + role)})
-                    .collect(Collectors.toSet());
+            [AuthoritiesConstants.FINANCIAL, AuthoritiesConstants.DEVLOPMENT, AuthoritiesConstants.MARKETING].each {
+                if (!roleMap[it].intersect(groups.toList()).empty) {
+                    result.add(new SimpleGrantedAuthority(it))
+                }
+            }
         }
-
-        return Collections.emptySet();
+        result
     }
 }

@@ -1,9 +1,9 @@
 package com.lhmtech.poc.sso.ssopoc
 
 class AuthoritiesConstants {
-    static final String ADMIN = "ROLE_ADMIN";
-    static final String DEVLOP = "ROLE_DEVLOP";
-    static final String INQUIRY = "ROLE_INQUIRY";
+    static final String FINANCIAL = "ROLE_FINANCIAL";
+    static final String DEVLOPMENT = "ROLE_DEVELOPMENT";
+    static final String MARKETING = "ROLE_MARKETING";
     static final String ANONYMOUS = "ROLE_ANONYMOUS";
     private AuthoritiesConstants() {
     }
