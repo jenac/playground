@@ -13,7 +13,7 @@ namespace Ex001Host
         //http://192.168.1.129:8000/Ex001?wsdl
         static void Main(string[] args)
         {
-            Uri baseAddress = new Uri("http://192.168.1.129:8000/Ex001");
+            Uri baseAddress = new Uri("http://0.0.0.0:8000/Ex001");
             using (ServiceHost host = new ServiceHost(typeof(Ex001.Ex001Service), baseAddress))
             {
                 // Enable metadata publishing.
