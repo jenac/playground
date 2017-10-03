@@ -65,7 +65,7 @@ functions:
     handler: com.serverless.FileTransformer
     events:
       - s3:
-        bucket: poc/source
+        bucket: aws-groovy-gradle-dev-serverlessdeploymentbucket-1do9wblga20cc/source
         event: s3:ObjectCreated:*
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
