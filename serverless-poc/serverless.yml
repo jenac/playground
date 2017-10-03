@@ -60,6 +60,12 @@ functions:
       - http:
           path: users/create
           method: get
+  fileTransform:
+    handler: com.serverless.FileTransformer
+    events:
+      - s3:
+        bucket: poc/source
+        event: s3:ObjectCreated:*
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
 #      - sns: greeter-topic
