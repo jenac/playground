@@ -18,7 +18,7 @@ class FileTransformer implements RequestHandler<S3Event, Integer> {
     Integer handleRequest(S3Event event, Context context) {
         Map<String, Object> values = event.getProperties()
         values.keySet().each {
-            key -> LOG.info("${key} : ${Map[key]}")
+            key -> LOG.info("${key}:")
         }
         return 0;
     }
