@@ -17,5 +17,5 @@ functions:
     handler: com.serverless.FileTransformer
     events:
       - s3:
-        bucket: some-tmp-bucket-for-poc
-        event: s3:ObjectCreated:*
+          bucket: some-tmp-bucket-for-poc
+          event: s3:ObjectCreated:*
