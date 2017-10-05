@@ -19,3 +19,5 @@ functions:
       - s3:
           bucket: some-tmp-bucket-for-poc
           event: s3:ObjectCreated:*
+          rules:
+            - prefix: source
