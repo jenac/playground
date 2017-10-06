@@ -1,0 +1,23 @@
+service: lambda-poc-service # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: java8
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+package:
+  artifact: build/distributions/hello.zip
+
+functions:
+  fileTransform:
+    handler: com.serverless.FileTransformer
+    events:
+      - s3:
+          bucket: some-tmp-bucket-for-poc
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: source
