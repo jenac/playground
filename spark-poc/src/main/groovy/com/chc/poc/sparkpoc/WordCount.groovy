@@ -1,6 +1,8 @@
 package com.chc.poc.sparkpoc
 
 import org.apache.spark.api.java.JavaRDD
+import org.apache.spark.sql.Dataset
+import org.apache.spark.sql.Row
 import org.apache.spark.sql.SparkSession
 
 /**
@@ -13,6 +15,8 @@ class WordCount {
 
         JavaRDD<String> lines = sparkSession.read().textFile('/Users/lichen/Projects/github/playground/spark-poc/src/main/resources/1.txt').javaRDD()
         Long count = lines.count()
+
+        Dataset<Row> master = sparkSession.read().format("csv").option("header", true).option("delimiter", "|").load("/Users/lichen/Projects/github/playground/spark-poc/src/main/resources/1.txt");
 
         sparkSession.stop()
         count
@@ -41,4 +45,6 @@ class WordCount {
         return "Initiate Data load!";
          */
     }
+
+
 }
