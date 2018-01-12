@@ -10,4 +10,4 @@ sudo dnf config-manager \
     https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce
 sudo systemctl start docker
-
+sudo usermod -aG docker $USER
