@@ -1,0 +1,3 @@
+git clone https://jenac@bitbucket.org/lhmtech/bot-portal.git
+git clone https://jenac@bitbucket.org/lhmtech/chat-bot.git
+git clone https://jenac@bitbucket.org/lhmtech/stock-watch.git
