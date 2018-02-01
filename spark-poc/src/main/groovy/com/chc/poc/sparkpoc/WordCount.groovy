@@ -3,7 +3,11 @@ package com.chc.poc.sparkpoc
 import org.apache.spark.api.java.JavaRDD
 import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Row
+import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.api.java.UDF1
+import org.apache.spark.sql.expressions.Aggregator
+import org.apache.spark.sql.types.DataTypes
 
 /**
  * Created by lichen on 10/16/17.
@@ -17,7 +21,7 @@ class WordCount {
         Long count = lines.count()
 
         Dataset<Row> master = sparkSession.read().format("csv").option("header", true).option("delimiter", "|").load("/Users/lichen/Projects/github/playground/spark-poc/src/main/resources/1.txt");
-
+        master.show()
         sparkSession.stop()
         count
 
@@ -45,6 +49,27 @@ class WordCount {
         return "Initiate Data load!";
          */
     }
+    private final static UDF1 length_of_string = new UDF1<String, String>() {
+        @Override
+        String call(String source) throws Exception {
+            if (source)
+                return source.length()
+            else
+                return "0"
+        }
+    }
+
+    def doTransform(String file) {
+        SparkSession sparkSession = SparkSession.builder().master("local").appName("WordCount").getOrCreate()
+        Dataset<Row> input = sparkSession.read().format("csv").option("header", true).option("delimiter", "|").load(file)
+        input.createOrReplaceTempView('provider')
+        sparkSession.udf().register("length", length_of_string, DataTypes.StringType)
+
+        Dataset<Row> output = sparkSession.sql("SELECT length(PROVIDER_NUMBER) AS PROVIDER_ID, NULL AS ORIG_PROVIDER_ID, NPI_NUMBER AS NATIONAL_PROVIDER_ID FROM provider")
 
 
+        output.show()
+        sparkSession.stop()
+
+    }
 }

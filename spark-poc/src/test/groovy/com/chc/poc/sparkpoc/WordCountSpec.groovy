@@ -14,4 +14,15 @@ class WordCountSpec extends spock.lang.Specification {
         then:
         c != 0
     }
+
+    def 'transform provider'() {
+        given:
+        WordCount wordCount = new WordCount()
+
+        when:
+        wordCount.doTransform('/Users/lichen/Projects/github/playground/spark-poc/src/test/resources/hca_provider_demographics.txt')
+
+        then:
+        true
+    }
 }
