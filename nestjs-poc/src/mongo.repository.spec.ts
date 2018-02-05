@@ -6,19 +6,13 @@ import 'mocha';
 import * as mongo from 'mongodb'
 
 describe('Hello function', () => {
-    let db;
 
-    before(async () => {
-        db = await mongoRepository.connect('mongodb://localhost:27017/', 'test2')
-    })
     it('should return hello world', async () => {
-        let p = await db.collection("todo").insertMany([
-            { topic: "learn typescript", progress: 10 },
-            { topic: "learn node.js", progress: 10 }
-        ]);
-        console.log(p);
-        mongoRepository.close();
-        expect(p != null);
+        await mongoRepository.connect('mongodb://localhost:27017/', 'test2')
+        await mongoRepository.upsertMessage(
+            { topic: "111 learn typescript", progress: 10, MsgId: 1234 }    
+        );
+        await mongoRepository.close();
     });
 
 });
