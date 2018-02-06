@@ -1,10 +1,12 @@
 
 import * as wechat from 'wechat4u';
 import * as qrcode from 'qrcode-terminal';
+import * as mongo from 'mongodb';
 
 export const botProviders = [{
     provide: 'Wechat4uToken',
-    useFactory: (): wechat => {
+    inject: ['MongoConnectionToken' ],
+    useFactory: (db: mongo.Db): wechat => {
         let bot = new wechat();
         bot.start();
         bot.on('uuid', uuid => {
@@ -20,6 +22,7 @@ export const botProviders = [{
             switch (msg.MsgType) {
                 case bot.CONF.MSGTYPE_TEXT:
                 console.log(msg.Content)
+                db.collection('bot_messages').save(msg);
                 break
             }
         });
