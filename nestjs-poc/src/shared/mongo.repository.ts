@@ -1,7 +1,8 @@
-import { logger } from './logger';
-import * as mongo from 'mongodb'
+import { Component } from '@nestjs/common';
+import * as mongo from 'mongodb';
 
-class MongoRepository {
+@Component()
+export class MongoRepository {
   public db: mongo.Db;
   public client: mongo.MongoClient;
   public async connect(url: string, database: string) {
@@ -18,4 +19,4 @@ class MongoRepository {
     await this.db.collection('bot_messages').save(message);
   }
 }
-export let mongoRepository = new MongoRepository();
+// export let mongoRepository = new MongoRepository();

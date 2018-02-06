@@ -1,12 +1,13 @@
 import { Get, Controller } from '@nestjs/common';
 
-import { logger } from './logger';
+import { Logger } from './shared/logger';
 
 @Controller()
 export class AppController {
+  constructor(private readonly logger: Logger) {}
 	@Get()
 	root(): string {
-    logger.instance.info("hello, world");
+    this.logger.instance.info("hello, world");
     return 'Hello World!';
   }
 }

@@ -1,5 +1,4 @@
-import { logger } from './logger';
-import { mongoRepository } from './mongo.repository';
+import { MongoRepository } from './mongo.repository';
 import { expect } from 'chai';
 import 'mocha';
 
@@ -8,6 +7,7 @@ import * as mongo from 'mongodb'
 describe('Hello function', () => {
 
     it('should return hello world', async () => {
+        let mongoRepository = new MongoRepository();
         await mongoRepository.connect('mongodb://localhost:27017/', 'test2')
         await mongoRepository.upsertMessage(
             { topic: "111 learn typescript", progress: 10, MsgId: 1234 }    
