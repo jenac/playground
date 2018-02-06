@@ -5,6 +5,7 @@ import * as mongo from 'mongodb';
 export class MongoRepository {
   public db: mongo.Db;
   public client: mongo.MongoClient;
+  
   public async connect(url: string, database: string) {
     this.client  = await mongo.MongoClient.connect(url);
     this.db = this.client.db(database);
@@ -14,9 +15,13 @@ export class MongoRepository {
     await this.client.close();
   }
 
-  async upsertMessage(message: any) : Promise<void> {
+  async upsertMessage(message: any) : Promise<any> {
     message._id = message.MsgId;
-    await this.db.collection('bot_messages').save(message);
+    return await this.db.collection('bot_messages').save(message);
+  }
+
+  async findAllMessage(): Promise<any[]> {
+    return await this.db.collection('bot_messages').find().toArray();
   }
 }
 // export let mongoRepository = new MongoRepository();

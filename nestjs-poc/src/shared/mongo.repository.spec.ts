@@ -12,6 +12,8 @@ describe('Hello function', () => {
         await mongoRepository.upsertMessage(
             { topic: "111 learn typescript", progress: 10, MsgId: 1234 }    
         );
+        let messages: any[] = await mongoRepository.findAllMessage();
+        messages.forEach( (m) => {console.log(m)});
         await mongoRepository.close();
     });
 
