@@ -6,7 +6,7 @@ import { Message } from './message';
 export class MessagesService {
     constructor(private readonly mongoRepository: MongoRepository) {
     }
-    
+
     async create(message: Message) : Promise<any> {
         return this.mongoRepository.upsertMessage(message);
     }

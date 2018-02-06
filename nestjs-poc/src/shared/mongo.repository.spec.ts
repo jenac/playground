@@ -7,14 +7,16 @@ import * as mongo from 'mongodb'
 describe('Hello function', () => {
 
     it('should return hello world', async () => {
-        let mongoRepository = new MongoRepository();
-        await mongoRepository.connect('mongodb://localhost:27017/', 'test2')
+        let client: mongo.MongoClient = await mongo.MongoClient.connect('mongodb://localhost:27017/');
+        let db = client.db('test3');
+
+        let mongoRepository = new MongoRepository(db);
         await mongoRepository.upsertMessage(
             { topic: "111 learn typescript", progress: 10, MsgId: 1234 }    
         );
         let messages: any[] = await mongoRepository.findAllMessage();
         messages.forEach( (m) => {console.log(m)});
-        await mongoRepository.close();
+        await client.close();
     });
 
 });
