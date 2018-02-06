@@ -1,4 +1,5 @@
-import { Controller, Inject, Post } from '@nestjs/common';
+import { Controller, Inject, Post, Get, Body } from '@nestjs/common';
+import { BotMessage } from './bot.message';
 import * as wechat from 'wechat4u';
 @Controller('bot')
 export class BotController {
@@ -6,8 +7,13 @@ export class BotController {
 
     }
 
+    @Get()
+    async state(): Promise<any[]> {
+        return this.bot.contacts;
+    }
+
     @Post()
-    async send(message: any): Promise<any> {
-        return this.bot.sendMsg('', '');
+    async send(@Body() message: BotMessage): Promise<any> {
+        return this.bot.sendMsg(message.text, message.to);
     }
 }
