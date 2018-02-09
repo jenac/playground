@@ -15,4 +15,9 @@ export class AuthController {
   public async authorized() {
     console.log('Authorized route...');
   }
+  /*
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imh0eHgyMDA5QGdtYWlsLmNvbSIsImlhdCI6MTUxODE4NDE5MSwiZXhwIjoxNTE4MTg3NzkxfQ.ID2ugFAXropOuSBytlIi77IjKt-jQEYYXASprXUG-N
+*/
 }
