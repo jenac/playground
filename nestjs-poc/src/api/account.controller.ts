@@ -24,7 +24,9 @@ export class AccountController {
 
   @Get("account")
   async getAccount(): Promise<UserDTO> {
-    return null
+    let userDTO: UserDTO = new UserDTO();
+    userDTO.id = 'ka12v0';
+    return userDTO;
   }
 
   @Post("account")
