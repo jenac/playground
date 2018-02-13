@@ -1,14 +1,13 @@
-import { Controller, Get, Post, Body, HttpCode, Param } from "@nestjs/common";
+import { Controller, Get, Post, Body, HttpCode, Param, HttpStatus } from "@nestjs/common";
 import { UserDTO } from "./models/user.dto";
 import { ManagedUserVM } from "./models/manage.user.vm";
-import { HTTP_CREATED } from "./api.constants";
 import { KeyAndPasswordVM } from "./models/key.password.vm";
 
 @Controller("api")
 export class AccountController {
 
   @Post("register")
-  @HttpCode(HTTP_CREATED)
+  @HttpCode(HttpStatus.CREATED)
   async registerAccount( @Body() managedUserVM: ManagedUserVM): Promise<void> {
 
   }
