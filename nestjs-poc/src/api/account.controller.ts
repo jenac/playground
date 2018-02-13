@@ -17,17 +17,17 @@ export class AccountController {
   async activateAccount( @Param("key") key: String): Promise<void> {
   }
 
-  @Get("/authenticate")
+  @Get("authenticate")
   async isAuthenticated(): Promise<string> {
     return 'admin'
   }
 
-  @Get("/account")
+  @Get("account")
   async getAccount(): Promise<UserDTO> {
     return null
   }
 
-  @Post("/account")
+  @Post("account")
   async saveAccount( @Body() userDTO: UserDTO): Promise<void> {
 
   }
