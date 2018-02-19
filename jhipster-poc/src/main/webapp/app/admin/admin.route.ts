@@ -3,12 +3,13 @@ import { Routes } from '@angular/router';
 import {
     auditsRoute,
     configurationRoute,
+    botRoute,
     docsRoute,
     healthRoute,
     logsRoute,
     metricsRoute,
     userMgmtRoute,
-    userDialogRoute
+    userDialogRoute,
 } from './';
 
 import { UserRouteAccessService } from '../shared';
@@ -16,6 +17,7 @@ import { UserRouteAccessService } from '../shared';
 const ADMIN_ROUTES = [
     auditsRoute,
     configurationRoute,
+    botRoute,
     docsRoute,
     healthRoute,
     logsRoute,
