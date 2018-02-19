@@ -29,7 +29,8 @@
                 "audits": "审核",
                 "apidocs": "API",
                 "database": "数据库",
-                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)",
+                "bot": "BOT"
             },
             "language": "语言"
         },

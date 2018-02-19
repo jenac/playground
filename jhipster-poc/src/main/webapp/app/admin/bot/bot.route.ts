@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { JhiBotComponent } from './bot.component';
+import { BotComponent } from './bot.component';
 
 export const botRoute: Route = {
-    path: 'jhi-bot',
-    component: JhiBotComponent,
+    path: 'bot',
+    component: BotComponent,
     data: {
         pageTitle: 'bot.title'
     }

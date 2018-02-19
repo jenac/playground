@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { JhiBotService } from './bot.service';
+import { BotService } from './bot.service';
 
 @Component({
     selector: 'jhi-bot',
     templateUrl: './bot.component.html'
 })
-export class JhiBotComponent implements OnInit {
+export class BotComponent implements OnInit {
     allBot: any = null;
     bot: any = null;
     configKeys: any[];
@@ -15,7 +15,7 @@ export class JhiBotComponent implements OnInit {
     reverse: boolean;
 
     constructor(
-        private botService: JhiBotService
+        private botService: BotService
     ) {
         this.configKeys = [];
         this.filter = '';
