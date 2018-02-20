@@ -1,0 +1,10 @@
+{
+    "bot": {
+        "title": "Wechat Bot",
+        "filter": "Filter (by prefix)",
+        "table": {
+            "prefix": "Prefix",
+            "properties": "Properties"
+        }
+    }
+}

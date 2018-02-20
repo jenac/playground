@@ -1,8 +1,13 @@
 <div *ngIf="allBot && bot">
     <h2 jhiTranslate="bot.title">Bot</h2>
 
-    <span jhiTranslate="bot.filter">Filter (by prefix)</span> <input type="text" [(ngModel)]="filter" class="form-control">
-    <label>Spring bot</label>
+    <div>
+        <qr-code [value]="'All QR Code data goes here!'" [size]="150"></qr-code>
+    <button class="btn btn-primary" (click)="refresh()">
+        <span class="fa fa-refresh"></span> <span jhiTranslate="metrics.refresh.button">Refresh</span>
+    </button
+    </div>
+    
     <table class="table table-striped table-bordered table-responsive d-table">
         <thead>
         <tr>

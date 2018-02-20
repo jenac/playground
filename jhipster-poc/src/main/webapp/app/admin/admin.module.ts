@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PocSharedModule } from '../shared';
+import { QRCodeModule } from 'angular2-qrcode';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -36,6 +37,7 @@ import {
     imports: [
         PocSharedModule,
         RouterModule.forChild(adminState),
+        QRCodeModule,
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     ],
     declarations: [
