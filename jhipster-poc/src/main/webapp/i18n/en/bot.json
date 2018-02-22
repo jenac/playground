@@ -1,7 +1,8 @@
 {
     "bot": {
         "title": "Wechat Bot",
-        "filter": "Filter (by prefix)",
+        "state": "State",
+        "reboot": "Reboot",
         "table": {
             "prefix": "Prefix",
             "properties": "Properties"

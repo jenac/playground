@@ -1,7 +1,8 @@
 {
     "bot": {
         "title": "微信机器人",
-        "filter": "过滤 (按前缀)",
+        "state": "状态",
+        "reboot": "重启",
         "table": {
             "prefix": "前缀",
             "properties": "属性"

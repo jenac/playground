@@ -5,7 +5,8 @@ import { BotState } from './bot.model';
 
 @Component({
     selector: 'jhi-bot',
-    templateUrl: './bot.component.html'
+    templateUrl: './bot.component.html',
+    styleUrls: ['./bot.component.css']
 })
 export class BotComponent implements OnInit {
     botState: BotState;
