@@ -1,0 +1,11 @@
+{
+    "bot": {
+        "title": "Wechat Bot",
+        "state": "State",
+        "reboot": "Reboot",
+        "table": {
+            "prefix": "Prefix",
+            "properties": "Properties"
+        }
+    }
+}
