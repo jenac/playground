@@ -1,0 +1,33 @@
+version: '2'
+services:
+    mongodb:
+      image: mongo:3.4.10
+      ports:
+        - "27017:27017"
+      networks:
+        - db
+            
+    botportal:
+      image: jenac/botportal
+      environment:
+        SPRING_DATA_MONGODB_URI: "mongodb://mongodb:27017"
+        SPRING_DATA_MONGODB_DATABASE: chatbot-dev
+        BOTSERVICE_HOST: http://chatbot:8888
+      ports:
+        - "8080:8080"
+      networks:
+        - db
+    
+    chatbot:
+      image: jenac/chat-bot
+      environment:
+        - BOT_STORAGE_BASE=/app/data
+        - BOT_MONGO_CONNECTION=mongodb://mongodb:27017/chatbot-dev
+        - BOT_DATABASE=chatbot-dev
+      ports:
+        - "8888:8888"
+      networks:
+        - db
+        
+networks:
+  db:
