@@ -1,0 +1,25 @@
+version: '2'
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    # ports:
+    #   - "27017:27017"
+    networks:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mariadb             
+      PMA_USER: root
+      PMA_PASSWORD: mysql
+    ports:
+      - "8088:80"
+    networks:
+      - db
+
+networks:
+  db:
