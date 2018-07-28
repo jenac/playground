@@ -1,0 +1,5 @@
+version: '2'
+services:
+  node:
+    image: node:8.11.2-alpine
+    command: tail -f /dev/null
