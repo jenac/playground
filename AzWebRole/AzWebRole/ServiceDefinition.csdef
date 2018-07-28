@@ -15,17 +15,4 @@
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
   </WebRole>
-  <NetworkConfiguration>
-    <!-- Name of the target Virtual Network -->
-    <VirtualNetworkSite name="Group asr asrvnet" />
-
-    <!-- Associating a Role to a Specific Subnet by name -->
-    <AddressAssignments>
-      <InstanceAddress roleName="WebRole1">
-        <Subnets>
-          <Subnet name="default" />
-        </Subnets>
-      </InstanceAddress>
-    </AddressAssignments>
-  </NetworkConfiguration>
 </ServiceDefinition>

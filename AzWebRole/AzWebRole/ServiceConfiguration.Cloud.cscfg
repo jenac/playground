@@ -6,4 +6,17 @@
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
+  <NetworkConfiguration>
+    <!-- Name of the target Virtual Network -->
+    <VirtualNetworkSite name="Group asr asrvnet" />
+
+    <!-- Associating a Role to a Specific Subnet by name -->
+    <AddressAssignments>
+      <InstanceAddress roleName="WebRole1">
+        <Subnets>
+          <Subnet name="default" />
+        </Subnets>
+      </InstanceAddress>
+    </AddressAssignments>
+  </NetworkConfiguration>
 </ServiceConfiguration>
