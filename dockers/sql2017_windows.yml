@@ -2,6 +2,7 @@ version: "3"
 services:
   db:
     image: "microsoft/mssql-server-windows-developer"
+    # image: "microsoft/mssql-server-windows-express"
     environment:
       SA_PASSWORD: "someP@ssword"
       ACCEPT_EULA: "Y"
