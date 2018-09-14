@@ -1,0 +1,21 @@
+version: "3"
+services:
+  grandnode:
+    image: "grandnode/release_4.20"
+    ports:
+      - "8080:80"
+    networks:
+      - db
+
+  mongo:
+    image: 'mongo:3.4.4'
+    # environment:
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - "27017:27017"  
+    networks:
+      - db
+
+networks:
+  db:
