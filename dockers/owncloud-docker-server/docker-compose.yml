@@ -39,7 +39,7 @@ services:
       retries: 5
     volumes:
       - files:/mnt/data
-      - /media/lihe/1T:/mnt/data/files/admin/files
+      - /home/lihe/owncloud:/mnt/data/files/admin/files
 
   db:
     image: webhippie/mariadb:latest
