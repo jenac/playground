@@ -5,4 +5,5 @@ alias gcm=git checkout master
 alias gl=git pull  
 alias ggp=git push  
 alias gcb=git checkout -b $1  
-alias gfa=git fetch --all --prune  
+alias gfa=git fetch --all --prune
+gb=git branch $1 $2
