@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install curl wget git build-essential -y
+RUN apt-get install curl wget git build-essential python2.7 python-pip -y
 
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh -e && \
