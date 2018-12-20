@@ -3,5 +3,4 @@ services:
   u18:
     image:  jenac/cloud9:node10
     ports:
-      - "80:80"
-      - "8080:8080"
+      - "8000:8000"
