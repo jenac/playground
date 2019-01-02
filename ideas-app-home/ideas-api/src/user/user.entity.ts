@@ -18,4 +18,8 @@ export class UserEntity {
   async hashPassword() {
     this.password = await bcrypt.hash(this.password, 11); //11 should be in const
   }
+
+  private get token(): string {
+    return '';
+  }
 }
