@@ -19,7 +19,7 @@ export class UserEntity {
     this.password = await bcrypt.hash(this.password, 11); //11 should be in const
   }
 
-  private get token(): string {
-    return '';
+  async comparePassword(attempt: string) : Promise<boolean> {
+    return await bcrypt.compare(attempt, this.password);
   }
 }

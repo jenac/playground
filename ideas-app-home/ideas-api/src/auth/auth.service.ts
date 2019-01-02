@@ -9,10 +9,6 @@ import { CredRO } from "./cred.ro";
 export class AuthService {
   constructor(@InjectRepository(UserEntity) private userRepository: Repository<UserEntity>) {}
 
-  async login(cred: CredDTO) {
-
-  }
-
   async register(cred: CredDTO) {
     const { username } = cred;
     let user: UserEntity = await this.userRepository.findOne({ where: { username } });
@@ -26,4 +22,14 @@ export class AuthService {
     console.log(JSON.stringify(user));
     return new CredRO(user);
   }
+
+  async login(cred: CredDTO) {
+    const { username } = cred;
+    let user: UserEntity = await this.userRepository.findOne({ where: { username } });
+    if (!user || !(await user.comparePassword(cred.password))) {
+      throw new HttpException('Invalid username/password', HttpStatus.BAD_REQUEST);
+    }
+    return new CredRO(user);
+  }
+
 }

@@ -4,7 +4,7 @@ import { async } from "rxjs/internal/scheduler/async";
 import { CredDTO } from "./cred.dto";
 import { ValidationPipe } from "src/shared/validation.pipe";
 
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -12,5 +12,11 @@ export class AuthController {
   @UsePipes(ValidationPipe)
   async register(@Body() cred: CredDTO) {
     return await this.authService.register(cred);
+  }
+
+  @Post('login')
+  @UsePipes(ValidationPipe)
+  async login(@Body() cred: CredDTO) {
+    return await this.authService.login(cred);
   }
 }
