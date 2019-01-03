@@ -32,4 +32,11 @@ export class AuthService {
     return new CredRO(user);
   }
 
+  async findByUsername(username: string) {
+    let user: UserEntity = await this.userRepository.findOne({ where: { username } });
+    if (!user) {
+      throw new HttpException('user not found', HttpStatus.NOT_FOUND);
+    }
+    return new CredRO(user);
+  }
 }

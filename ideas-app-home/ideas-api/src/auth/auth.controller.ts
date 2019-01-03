@@ -4,6 +4,7 @@ import { async } from "rxjs/internal/scheduler/async";
 import { CredDTO } from "./cred.dto";
 import { ValidationPipe } from "src/shared/validation.pipe";
 import { AuthGuard } from "src/shared/auth.guard";
+import { User } from "src/shared/user.decorator";
 
 @Controller()
 export class AuthController {
@@ -23,7 +24,7 @@ export class AuthController {
 
   @Get('auth/whoami')
   @UseGuards(AuthGuard)
-  async me() {
-    return 'not implemented'
+  async me(@User('username') username: string) {
+    return this.authService.findByUsername(username);
   }
 }
