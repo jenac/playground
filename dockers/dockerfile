@@ -1,0 +1,4 @@
+apt update && apt upgrade -y && apt install curl gnupg2 build-essential git python2.7 python-pip wget nodejs npm -y
+
+
+

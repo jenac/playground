@@ -4,4 +4,5 @@ services:
     image: ubuntu:18.04
     command: tail -f /dev/null
     ports:
-      - "2222:2222"
+      - "2222:22"
+      - "8000:8181"

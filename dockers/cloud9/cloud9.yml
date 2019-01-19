@@ -1,6 +1,6 @@
 version: '3'
 services:
   u18:
-    image:  jenac/cloud9:node10
+    image:  jenac/cloud9
     ports:
-      - "8000:8000"
+      - "8000:8181"
