@@ -4,3 +4,5 @@ services:
     image:  jenac/cloud9
     ports:
       - "8000:8181"
+    # command: ["tail", "-f", "/dev/null"]
+
