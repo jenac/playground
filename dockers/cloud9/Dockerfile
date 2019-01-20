@@ -9,6 +9,7 @@ RUN scripts/install-sdk.sh; exit 0
 RUN npm install
 # RUN node server.js -l 0.0.0.0 -a :
 
+RUN mkdir /projects
 EXPOSE 8181
 
-CMD ["node", "server.js", "-l", "0.0.0.0", "-a", ":"]
+CMD ["node", "server.js", "-l", "0.0.0.0", "-a", ":", "-w", "/projects"]
