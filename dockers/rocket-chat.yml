@@ -1,0 +1,27 @@
+version: '2'
+services:
+  mongo:
+    image: mongo:3.4
+    entrypoint: mongod --smallfiles
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - db
+
+  rocketchat:
+    image: rocket.chat:latest
+    environment:
+      MONGO_URL: "mongodb://mongo:27017/rocketchat"
+      ROOT_URL: "http://localhost:3000"
+    ports:
+      - "3000:3000"
+    networks:
+      - db
+    depends_on:
+      - mongo
+    command: tail -F anything
+
+networks:
+    db:
