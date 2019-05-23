@@ -8,7 +8,7 @@ class CoursesPage extends React.Component {
         course: {
             title: ""
         }
-    };
+    }; //for input only
 
     handleChange = event => {
         const course = { ...this.state.course, title: event.target.value };
@@ -32,18 +32,22 @@ class CoursesPage extends React.Component {
                 </input>
                 <input type="submit" value="Save">
                 </input>
+                {this.props.courses.map(course => (
+                    <div key={course.title}> {course.title}</div>
+                ))}
             </form>
         );
     }
 }
 
 CoursesPage.propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    courses: PropTypes.array.isRequired, //for the whole page
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state) { //state from reducer, an array
     return {
-        course: state.course
+        courses: state.courses
     }
 }
 
