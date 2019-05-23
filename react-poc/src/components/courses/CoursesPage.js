@@ -17,7 +17,7 @@ class CoursesPage extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.dispatch(courseActions.createCourse(this.state.course));
+        this.props.createCourse(this.state.course);
         console.log(this.state.course);
     }
 
@@ -41,8 +41,9 @@ class CoursesPage extends React.Component {
 }
 
 CoursesPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    createCourse: PropTypes.func.isRequired,
     courses: PropTypes.array.isRequired, //for the whole page
+
 }
 
 function mapStateToProps(state) { //state from reducer, an array
@@ -51,4 +52,10 @@ function mapStateToProps(state) { //state from reducer, an array
     }
 }
 
-export default connect(mapStateToProps)(CoursesPage); 
+function mapDispatchToProps(dispatch) {
+    return {
+        createCourse: course => dispatch(courseActions.createCourse(course))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage); 
