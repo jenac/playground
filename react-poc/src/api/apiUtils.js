@@ -15,3 +15,5 @@ export function handleError(error) {
   console.error("API call failed. " + error);
   throw error;
 }
+
+export const API_HOST='http://localhost:3001';

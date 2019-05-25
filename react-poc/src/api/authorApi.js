@@ -1,5 +1,5 @@
-import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/authors/";
+import { handleResponse, handleError, API_HOST } from "./apiUtils";
+const baseUrl = `${API_HOST}/authors/`;
 
 export function getAuthors() {
   return fetch(baseUrl)

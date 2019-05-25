@@ -1,6 +1,6 @@
-import { handleResponse, handleError } from "./apiUtils";
+import { handleResponse, handleError, API_HOST } from "./apiUtils";
 // const baseUrl = process.env.API_URL + "/courses/";
-const baseUrl = "http://localhost:3001/courses/";
+const baseUrl = `${API_HOST}/courses/`;
 
 export function getCourses() {
   return fetch(baseUrl)
