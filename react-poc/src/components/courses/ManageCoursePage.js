@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadCourses }  from '../../redux/actions/courseActions';
+import { loadCourses } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
 
 
-class ManageCoursePage extends React.Component {
-    componentDidMount() {
-        let { authors, courses, loadCourses,  loadAuthors} = this.props;
+// const ManageCoursePage = (props) => {
+const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors }) => {    //directly desctructor
+    useEffect(() => {
         if (courses.length === 0) {
             loadCourses().catch(error => {
                 console.error("Loading courses failed", error);
-            });     
+            });
         }
-        
+
         if (authors.length === 0) {
             loadAuthors().catch(error => {
                 console.error("Loading authors failed", error);
             });
         }
-    }
-    
-    render() {
-        return (
-            <>
-                <h2>Manage Course</h2>
-            </>
-        );
-    }
+    }, []); //empty means no didmount init
+
+    return (
+        <>
+            <h2>Manage Course</h2>
+        </>
+    );
+
 }
 
 ManageCoursePage.propTypes = {
