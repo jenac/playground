@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadCourses } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
-
+import CourseForm from './CourseForm';
+import { newCourse } from '../tools/mockData'
 
 // const ManageCoursePage = (props) => {
-const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors }) => {    //directly desctructor
+const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, ...props }) => {    //directly desctructor
+    const [ course, setCourse ] = useState({...props.course})
+    const [ errors, setErrors ] = useEffect({});
+
     useEffect(() => {
         if (courses.length === 0) {
             loadCourses().catch(error => {
@@ -22,14 +26,13 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors }) => {  
     }, []); //empty means no didmount init
 
     return (
-        <>
-            <h2>Manage Course</h2>
-        </>
+        <CourseForm course={course} errors={errors} authors={authors}></CourseForm>
     );
 
 }
 
 ManageCoursePage.propTypes = {
+    course: PropTypes.object.isRequired,
     authors: PropTypes.array.isRequired,
     courses: PropTypes.array.isRequired, //for the whole page
     loadCourses: PropTypes.func.isRequired,
@@ -39,6 +42,7 @@ ManageCoursePage.propTypes = {
 
 function mapStateToProps(state) { //state from reducer, an array
     return {
+        course: newCourse,
         courses: state.courses,
         authors: state.authors
     };
