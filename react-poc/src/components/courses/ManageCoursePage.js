@@ -9,7 +9,7 @@ import { newCourse } from '../tools/mockData'
 // const ManageCoursePage = (props) => {
 const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, ...props }) => {    //directly desctructor
     const [ course, setCourse ] = useState({...props.course})
-    const [ errors, setErrors ] = useEffect({});
+    const [ errors, setErrors ] = useState({});
 
     useEffect(() => {
         if (courses.length === 0) {
