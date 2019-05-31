@@ -72,67 +72,11 @@
     },
     {
       "id": 11,
-      "title": "AD",
+      "title": "A",
       "authorId": 1,
-      "category": "ASF",
-      "createdAt": 1559316096195,
-      "slug": "ad"
-    },
-    {
-      "id": 12,
-      "title": "1asdfas",
-      "authorId": 2,
-      "category": "1",
-      "createdAt": 1559317097811,
-      "slug": "1"
-    },
-    {
-      "id": 13,
-      "title": "C",
-      "authorId": 2,
-      "category": "C",
-      "createdAt": 1559318744575,
-      "slug": "c"
-    },
-    {
-      "id": 14,
-      "title": "M",
-      "authorId": 3,
-      "category": "A",
-      "createdAt": 1559318835235,
-      "slug": "m"
-    },
-    {
-      "id": 15,
-      "title": "Psadfasd",
-      "authorId": 2,
-      "category": "aasdf",
-      "createdAt": 1559318935171,
-      "slug": "p"
-    },
-    {
-      "id": 16,
-      "title": "233",
-      "authorId": 2,
-      "category": "1",
-      "createdAt": 1559321157887,
-      "slug": "233"
-    },
-    {
-      "id": 17,
-      "title": "ASF",
-      "authorId": 2,
-      "category": "asdfasdf",
-      "createdAt": 1559321775658,
-      "slug": "asf"
-    },
-    {
-      "id": 18,
-      "title": "asdfasdfasdfasdf",
-      "authorId": 3,
-      "category": "asdfasdfasdfasdf",
-      "createdAt": 1559321868190,
-      "slug": "asdfasdfasdfasdf"
+      "category": "F",
+      "createdAt": 1559331266843,
+      "slug": "a"
     }
   ],
   "authors": [
