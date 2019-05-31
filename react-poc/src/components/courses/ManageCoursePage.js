@@ -25,8 +25,16 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, ...props
         }
     }, []); //empty means no didmount init
 
+    function handleChange(event) {
+        const {name, value} = event.target;
+        setCourse(prevCourse => ({
+            ...prevCourse,
+            [name]: name === 'authorId' ? parseInt(value, 10) : value
+        }))
+    }
+
     return (
-        <CourseForm course={course} errors={errors} authors={authors}></CourseForm>
+        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange}></CourseForm>
     );
 
 }
