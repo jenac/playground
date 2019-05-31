@@ -1,12 +1,16 @@
 import * as types from './actionTypes';
 import * as courseApi from '../../api/courseApi';
 
-export function createCourse(course) {
-    return { type: types.CREATE_COURSE, course };
-}
-
 export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses };
+}
+
+export function createCourseSuccess(course) {
+    return { type: types.CREATE_COURSE_SUCCESS, course };
+}
+
+export function updateCourseSuccess(course) {
+    return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
 
 export function loadCourses() {
@@ -20,4 +24,19 @@ export function loadCourses() {
                 throw error;
             });
     };
+}
+
+export function saveCourse(course) {
+    return function(dispacth, getState) { //getState can get all the state in the store, here we did not use it.
+        return courseApi
+            .saveCourse(course)
+            .then(savedCourse => {
+                course.id 
+                    ? dispacth(updateCourseSuccess(savedCourse))
+                    : dispacth(createCourseSuccess(saveCourse));
+            })
+            .catch(error => {
+                throw error;
+            });
+    }
 }
