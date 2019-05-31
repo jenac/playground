@@ -33,7 +33,7 @@ export function saveCourse(course) {
             .then(savedCourse => {
                 course.id 
                     ? dispacth(updateCourseSuccess(savedCourse))
-                    : dispacth(createCourseSuccess(saveCourse));
+                    : dispacth(createCourseSuccess(savedCourse));
             })
             .catch(error => {
                 throw error;

@@ -16,6 +16,8 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
             loadCourses().catch(error => {
                 console.error("Loading courses failed", error);
             });
+        } else {
+            setCourse({...props.course});
         }
 
         if (authors.length === 0) {
@@ -23,7 +25,7 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
                 console.error("Loading authors failed", error);
             });
         }
-    }, []); //empty means no didmount init
+    }, [props.course]); //empty means no didmount init
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -55,9 +57,15 @@ ManageCoursePage.propTypes = {
     history: PropTypes.object.isRequired,
 }
 
-function mapStateToProps(state) { //state from reducer, an array
+function getCourseBySlug(courses, slug) {
+    return courses.find(course => course.slug === slug) || null;
+}
+
+function mapStateToProps(state, ownProps) { //state from reducer, an array
+    const slug = ownProps.match.params.slug;
+    const course = slug && state.courses.length > 0 ? getCourseBySlug(state.courses, slug) : newCourse;
     return {
-        course: newCourse,
+        course,
         courses: state.courses,
         authors: state.authors
     };
