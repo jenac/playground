@@ -7,7 +7,7 @@ import CourseForm from './CourseForm';
 import { newCourse } from '../tools/mockData'
 
 // const ManageCoursePage = (props) => {
-const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCourse, ...props }) => {    //directly desctructor
+const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCourse, history, ...props }) => {    //directly desctructor
     const [ course, setCourse ] = useState({...props.course})
     const [ errors, setErrors ] = useState({});
 
@@ -35,7 +35,9 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
 
     function handleSave(event) {
         event.preventDefault();
-        saveCourse(course);
+        saveCourse(course).then(() => { 
+            history.push('/courses'); 
+        });
     }
     return (
         <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave}></CourseForm>
@@ -50,6 +52,7 @@ ManageCoursePage.propTypes = {
     loadCourses: PropTypes.func.isRequired,
     loadAuthors: PropTypes.func.isRequired,
     saveCourse: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) { //state from reducer, an array
