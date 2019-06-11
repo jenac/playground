@@ -8,6 +8,8 @@ import PageNotFound from './components/PageNotFound';
 import CoursesPage from './components/courses/CoursesPage';
 import configureStore from './redux/configureStore';
 import { Provider as ReduxProvider } from 'react-redux';
+import ManageCoursePage from './components/courses/ManageCoursePage';
+
 
 const store = configureStore();
 
@@ -21,6 +23,8 @@ function App() {
             <Route exact path="/" component={HomePage}></Route>
             <Route path="/about" component={AboutPage}></Route>
             <Route path="/courses" component={CoursesPage}></Route>
+            <Route path="/course/:slug" component={ManageCoursePage}></Route>
+            <Route path="/course" component={ManageCoursePage}></Route>
             <Route component={PageNotFound}></Route>
           </Switch>
         </div>
