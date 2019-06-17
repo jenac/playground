@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import * as courseApi from '../../api/courseApi';
+import { beginApiCall } from './apiStatusActions';
 
 export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses };
@@ -15,6 +16,7 @@ export function updateCourseSuccess(course) {
 
 export function loadCourses() {
     return function(dispacth) {
+        dispacth(beginApiCall());
         return courseApi
             .getCourses()
             .then(courses => {
@@ -28,6 +30,7 @@ export function loadCourses() {
 
 export function saveCourse(course) {
     return function(dispacth, getState) { //getState can get all the state in the store, here we did not use it.
+        dispacth(beginApiCall());
         return courseApi
             .saveCourse(course)
             .then(savedCourse => {
