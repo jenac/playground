@@ -9,7 +9,8 @@ import { newCourse } from '../tools/mockData'
 // const ManageCoursePage = (props) => {
 const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCourse, history, ...props }) => {    //directly desctructor
     const [ course, setCourse ] = useState({...props.course})
-    const [ errors, setErrors ] = useState({});
+    const [ errors, setErrors ] = useState({}); //local state also?
+    const [ saving, setSaving ] = useState(false); //local state
 
     useEffect(() => {
         if (courses.length === 0) {
@@ -37,12 +38,13 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
 
     function handleSave(event) {
         event.preventDefault();
+        setSaving(true);
         saveCourse(course).then(() => { 
             history.push('/courses'); 
         });
     }
     return (
-        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave}></CourseForm>
+        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} saving={saving}></CourseForm>
     );
 
 }
