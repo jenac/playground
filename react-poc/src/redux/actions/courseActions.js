@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import * as courseApi from '../../api/courseApi';
+import { beginApiCall, apiCallError } from './apiStatusActions';
 
 export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses };
@@ -13,8 +14,14 @@ export function updateCourseSuccess(course) {
     return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
 
+export function deleteCourseOptimistic(course) {
+    return { type: types.DELETE_COURSE_OPTIMISTIC, course };
+}
+
+
 export function loadCourses() {
     return function(dispacth) {
+        dispacth(beginApiCall());
         return courseApi
             .getCourses()
             .then(courses => {
@@ -28,6 +35,7 @@ export function loadCourses() {
 
 export function saveCourse(course) {
     return function(dispacth, getState) { //getState can get all the state in the store, here we did not use it.
+        dispacth(beginApiCall());
         return courseApi
             .saveCourse(course)
             .then(savedCourse => {
@@ -36,7 +44,16 @@ export function saveCourse(course) {
                     : dispacth(createCourseSuccess(savedCourse));
             })
             .catch(error => {
+                dispacth(apiCallError());
                 throw error;
             });
+    }
+}
+
+export function deleteCourse(course) {
+    return function(dispacth) {
+        //directly remove from state
+        dispacth(deleteCourseOptimistic(course));
+        return courseApi.deleteCourse(course.id);
     }
 }

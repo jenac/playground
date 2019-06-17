@@ -5,11 +5,13 @@ import { loadCourses, saveCourse } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
 import CourseForm from './CourseForm';
 import { newCourse } from '../tools/mockData'
+import { toast } from 'react-toastify';
 
 // const ManageCoursePage = (props) => {
 const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCourse, history, ...props }) => {    //directly desctructor
     const [ course, setCourse ] = useState({...props.course})
-    const [ errors, setErrors ] = useState({});
+    const [ errors, setErrors ] = useState({}); //local state also?
+    const [ saving, setSaving ] = useState(false); //local state
 
     useEffect(() => {
         if (courses.length === 0) {
@@ -35,14 +37,32 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
         }))
     }
 
+    function formIsValid() {
+        const { title, authorId, category } = course;
+        const errors = {};
+
+        if (!title) errors.title = "Title is required";
+        if (!authorId) errors.author = "Author is required";
+        if (!category) errors.category = "Category is required";
+
+        setErrors(errors);
+        return Object.keys(errors).length === 0;
+    }
+
     function handleSave(event) {
         event.preventDefault();
+        if (!formIsValid()) return;
+        setSaving(true);
         saveCourse(course).then(() => { 
+            toast.success('Course Saved.');
             history.push('/courses'); 
+        }).catch(error => {
+            setSaving(false);
+            setErrors({ onSave: error.message });
         });
     }
     return (
-        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave}></CourseForm>
+        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} saving={saving}></CourseForm>
     );
 
 }
