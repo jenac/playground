@@ -43,6 +43,9 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
         saveCourse(course).then(() => { 
             toast.success('Course Saved.');
             history.push('/courses'); 
+        }).catch(error => {
+            setSaving(false);
+            setErrors({ onSave: error.message });
         });
     }
     return (

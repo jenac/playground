@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import * as authorApi from '../../api/authorApi';
-import { beginApiCall } from './apiStatusActions';
+import { beginApiCall, apiCallError } from './apiStatusActions';
 
 
 export function loadAuthorsSuccess(authors) {
@@ -16,6 +16,7 @@ export function loadAuthors() {
                 dispacth(loadAuthorsSuccess(authors));
             })
             .catch(error => {
+                dispacth(apiCallError());
                 throw error;
             });
     };
