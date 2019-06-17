@@ -14,6 +14,11 @@ export function updateCourseSuccess(course) {
     return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
 
+export function deleteCourseOptimistic(course) {
+    return { type: types.DELETE_COURSE_OPTIMISTIC, course };
+}
+
+
 export function loadCourses() {
     return function(dispacth) {
         dispacth(beginApiCall());
@@ -42,5 +47,13 @@ export function saveCourse(course) {
                 dispacth(apiCallError());
                 throw error;
             });
+    }
+}
+
+export function deleteCourse(course) {
+    return function(dispacth) {
+        //directly remove from state
+        dispacth(deleteCourseOptimistic(course));
+        return courseApi.deleteCourse(course.id);
     }
 }
