@@ -5,6 +5,7 @@ import { loadCourses, saveCourse } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
 import CourseForm from './CourseForm';
 import { newCourse } from '../tools/mockData'
+import { toast } from 'react-toastify';
 
 // const ManageCoursePage = (props) => {
 const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCourse, history, ...props }) => {    //directly desctructor
@@ -40,6 +41,7 @@ const ManageCoursePage = ({ authors, courses, loadCourses, loadAuthors, saveCour
         event.preventDefault();
         setSaving(true);
         saveCourse(course).then(() => { 
+            toast.success('Course Saved.');
             history.push('/courses'); 
         });
     }
