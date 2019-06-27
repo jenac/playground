@@ -1,0 +1,5 @@
+version: '2'
+services:
+  jenkins-docker:
+    image: jenac/python-ta
+    command: tail -F anything

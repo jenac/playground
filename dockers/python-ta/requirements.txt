@@ -1,0 +1,9 @@
+requests
+numpy
+ta-lib
+psycopg2-binary
+sqlalchemy
+yattag
+azure
+azure-cosmosdb-table
+
