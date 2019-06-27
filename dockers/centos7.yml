@@ -1,0 +1,8 @@
+version: '3'
+services:
+  centos7:
+    image: centos:7
+    command: tail -f /dev/null
+    ports:
+      - "2222:22"
+      - "3390:3389"      
