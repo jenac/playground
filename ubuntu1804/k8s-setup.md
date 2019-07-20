@@ -116,6 +116,6 @@ sudo  kubectl get pods --all-namespaces
  ## Add Slave or Worker Nodes to the Cluster
  Run the command in master output, like the following:
  ```bash
- kubeadm join 192.168.1.160:6443 --token hmfqsj.pblv9xpfcde5n3zy \
+ sudo kubeadm join 192.168.1.160:6443 --token hmfqsj.pblv9xpfcde5n3zy \
     --discovery-token-ca-cert-hash sha256:af0a947b5933c06232397361f71fc9b553068775f0fb776a534e761bf74c7afb
 ```
