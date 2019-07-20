@@ -10,6 +10,15 @@
 **In HyperV:  master node need 2 cpus**
 
 ## Setup hostname
+* on all nodes
+```bash
+sudo nano /etc/cloud/cloud.cfg
+```
+change the following line to `true`:
+```bash
+# This will cause the set+update hostname module to not operate (if true)
+preserve_hostname: true
+```
 * on 160
 ```bash
 sudo hostnamectl set-hostname "k8s-master"
@@ -50,7 +59,7 @@ docker --version
 sudo apt-get install apt-transport-https curl -y
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-sudo swapoff -a #disable swap, edit /etc/fstab, if you want disable it permanently
+sudo swapoff -a #disable swap, edit /etc/fstab comment out the swap line, if you want disable it permanently
 sudo apt-get install kubeadm -y
 kubeadm version
 ```
