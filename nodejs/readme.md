@@ -35,6 +35,8 @@
 
 # Popular Framework to build REST api
 * Express
+  * create project folder `mkdir hello-express`
+  * into project folder `cd hello-express`
   * create npm project: `npm init`
   * install express:`npm i --save express`
 
