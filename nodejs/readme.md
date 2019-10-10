@@ -35,6 +35,7 @@
 
 # Popular Framework to build REST api
 * Express
-
+  * create npm project: `npm init`
+  * install express:`npm i --save express`
 
 * NestJs
