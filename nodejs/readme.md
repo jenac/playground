@@ -22,6 +22,7 @@
   * 401 unauthorized
   * 403 forbidden
   * 404 not found
+  * 409 conflict: when adding an already existing entity
   * 500 internal server error
   * 503 service unavailable
 * Routing/Url pattern:
@@ -51,3 +52,5 @@
   
 
 * NestJs
+
+
