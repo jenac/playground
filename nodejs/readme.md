@@ -38,6 +38,16 @@
   * create project folder `mkdir hello-express`
   * into project folder `cd hello-express`
   * create npm project: `npm init`
-  * install express:`npm i --save express`
+  * install express:`npm i --save express` --save means save into package.json as runtime dependency. --save-dev means save to package.json as develop dependency.
+  * nodemon: `npm i -g nodemon` -g means global namespace, then run app.js with nodemon `nodemon app.js`
+  * to make req.body work:
+  	* install body-parser `npm i --save body-parser`
+  	* added setup in code:
+  	```
+  	const bodyParser = require('body-parser')
+	app.use(bodyParser.urlencoded({ extended: false }))
+	app.use(bodyParser.json())  
+	```
+  
 
 * NestJs
