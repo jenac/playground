@@ -8,6 +8,13 @@ import FlexDimensionsBasics from './FlexDimensionsBasics';
 import FlexDirectionBasics from './FlexDirectionBasics';
 import JustifyContentBasics from './JustifyContentBasics';
 import AlignItemsBasics from './AlignItemsBasics';
+import PizzaTranslator from './PizzaTranslator';
+import ButtonBasics from './ButtonBasics';
+import Touchables from './Touchables';
+import IScrolledDownAndWhatHappenedNextShockedMe from './IScrolledDownAndWhatHappenedNextShockedMe';
+import FlatListBasics from './FlatListBasics';
+import SectionListBasics from './SectionListBasics';
+import FetchExample from './FetchExample';
 
 export default function App() {
   return (
@@ -31,7 +38,28 @@ export default function App() {
     // <JustifyContentBasics></JustifyContentBasics>
 
     // 5.
-    <AlignItemsBasics></AlignItemsBasics>
+    // <AlignItemsBasics></AlignItemsBasics>
+
+    // 6.
+    // <PizzaTranslator></PizzaTranslator>
+
+    // 7.
+    // <ButtonBasics></ButtonBasics>
+
+    // 8.
+    // <Touchables></Touchables>
+
+    // 9. 
+    // <IScrolledDownAndWhatHappenedNextShockedMe></IScrolledDownAndWhatHappenedNextShockedMe>
+
+    // 10.
+    // <FlatListBasics></FlatListBasics>
+
+    // 11.
+    // <SectionListBasics></SectionListBasics>
+
+    // 12.
+    <FetchExample></FetchExample>
   );
 }
 
