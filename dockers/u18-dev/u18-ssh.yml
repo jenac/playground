@@ -1,0 +1,7 @@
+version: '3'
+services:
+  u18:
+    image: ubuntu:18.04
+    command: tail -f /dev/null
+    ports:
+      - "3390:3389"      
