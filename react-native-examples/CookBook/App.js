@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ch0202 } from './components/Ch0202';
+import { Ch0301 } from './components/Ch0301';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Ch0202></Ch0202>
+      <Ch0301 name="PancakesYaa!" isYummy={true} />
+      
       <Text>Open up App.js to start working on your app! What?</Text>
     </View>
   );
