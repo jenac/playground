@@ -1,12 +1,17 @@
 
 using System;
+using System.Collections.Generic;
 
 namespace WhatsNewC60
 {
     public class Student
     {
+        //readonly property can be only set by constructor
         public string LastName { get; }
 
+        //Auto-property initializers
+        public ICollection<double> Grades { get; } = new List<double>() {4.5, 4.0, 4.9};
+        
         public Student(string readonlyLastName) {
             LastName = readonlyLastName;
         }
