@@ -27,3 +27,13 @@ dotnet ef database update
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet remove package Microsoft.EntityFrameworkCore.SqlServer
 ```
+
+* In `spa_react` project, `EmployeeContext` is database first, `HRConext` is code first. Some commands here
+    * Generate migration code: 
+        ```
+        dotnet ef migrations add InitialCreate  -c HRContext
+        ```
+    * Update database with context only: 
+        ```
+        dotnet ef database update -Context HRContext
+        ```
