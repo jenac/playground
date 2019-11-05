@@ -22,3 +22,8 @@ dotnet tool install --global dotnet-ef
 dotnet ef database update
 ```
  
+* Useful `dotnet` commands:
+```
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet remove package Microsoft.EntityFrameworkCore.SqlServer
+```
