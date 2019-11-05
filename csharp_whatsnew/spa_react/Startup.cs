@@ -31,6 +31,7 @@ namespace spa_react
                 options.UseSqlServer(ConnectionString));
 
             services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(ConnectionString));  
+            services.AddDbContext<HRContext>(options => options.UseSqlServer(ConnectionString));  
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
