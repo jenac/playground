@@ -37,3 +37,8 @@ dotnet remove package Microsoft.EntityFrameworkCore.SqlServer
         ```
         dotnet ef database update -Context HRContext
         ```
+
+* blazor server + auth + sql server
+```
+dotnet new blazorserver --auth Individual -uld -o matblazor-server
+```
