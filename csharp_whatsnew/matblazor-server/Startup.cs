@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using matblazor_server.Areas.Identity;
 using matblazor_server.Data;
+using EmbeddedBlazorContent;
 
 namespace matblazor_server
 {
@@ -64,6 +65,8 @@ namespace matblazor_server
 
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.UseEmbeddedBlazorContent(typeof(MatBlazor.BaseMatComponent).Assembly);
 
             app.UseEndpoints(endpoints =>
             {
