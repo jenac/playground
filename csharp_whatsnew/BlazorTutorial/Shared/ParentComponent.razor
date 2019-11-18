@@ -1,6 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Components
+@using BlazorTutorial.Services;
+@inject RandomService RandomService
 <div class="alert alert-success">
     @AlertText
+</div>
+
+<div class="alert alert-danger">
+    My Random Id: @RandomService.RandomId
 </div>
 
 <ChildComponent>

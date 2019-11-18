@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorTutorial.Data;
+using BlazorTutorial.Services;
 
 namespace BlazorTutorial
 {
@@ -29,6 +30,7 @@ namespace BlazorTutorial
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<RandomService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
