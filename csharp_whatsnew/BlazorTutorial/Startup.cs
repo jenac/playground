@@ -30,7 +30,9 @@ namespace BlazorTutorial
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<RandomService>();
+            // services.AddSingleton<RandomService>();
+            services.AddTransient<RandomService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
