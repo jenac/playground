@@ -1,0 +1,21 @@
+﻿<div class="alert alert-info">
+    @ChildContent
+</div>
+
+<div class="alert alert-@AlertTheme">
+    Toggle dark theme: <input type="checkbox" @bind="@_darkThemeOn" />
+</div>
+
+@code {
+
+    private bool _darkThemeOn;
+    private string AlertTheme => _darkThemeOn ? "dark" : "light";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _darkThemeOn = true;
+    }
+}
