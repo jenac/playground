@@ -31,7 +31,9 @@ namespace BlazorTutorial
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             // services.AddSingleton<RandomService>();
-            services.AddTransient<RandomService>();
+            // services.AddTransient<RandomService>();
+            services.AddScoped<RandomService>();
+            
             
         }
 
