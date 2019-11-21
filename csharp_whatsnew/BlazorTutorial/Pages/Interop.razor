@@ -30,7 +30,7 @@
 <div>
     The random number is <span id="randomNumberSpan"></span>
 </div>
-<button class="btn btn-info" onclick="givenMeRandomInt()" >Randomize!</button>
+<button class="btn btn-info" onclick="givenMeRandomInt(1000)" >Randomize!</button>
 
 @code {
 
@@ -59,8 +59,8 @@
     }
 
     [JSInvokable]
-    public static Task<int> GenerateRandomInt() 
+    public static Task<int> GenerateRandomInt(int maxValue) 
     {
-        return Task.FromResult(new Random().Next());
+        return Task.FromResult(new Random().Next(maxValue));
     }
 }

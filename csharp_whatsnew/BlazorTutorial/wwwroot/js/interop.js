@@ -17,8 +17,8 @@ function focusElement(element) {
     element.focus();
 }
 
-function givenMeRandomInt() {
-    DotNet.invokeMethodAsync('BlazorTutorial', 'GenerateRandomInt')
+function givenMeRandomInt(maxIntSize) {
+    DotNet.invokeMethodAsync('BlazorTutorial', 'GenerateRandomInt', maxIntSize)
         .then(result => {
             setElementTextById('randomNumberSpan', result);
         });
