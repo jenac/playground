@@ -1,0 +1,3 @@
+CREATE USER odoo WITH PASSWORD 'someP@ssword';
+
+ALTER USER odoo CREATEDB;
