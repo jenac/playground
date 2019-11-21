@@ -13,7 +13,7 @@
 <input @bind="questionText" />
 <button class="btn btn-warning" @onclick="AskQuestion">Ask Question</button>
 <div>
-    The answer was <span id="answerSpan"></span>
+    The random number is <span id="randomNumberSpan"></span>
 </div>
 
 <br />
@@ -23,6 +23,14 @@
 <input @ref="InputToFocus"/>
 <button class="btn btn-danger" @onclick="Focus">Focus!</button>
 
+<br />
+<br />
+<hr />
+<h3>Give me random int</h3>
+<div>
+    The answer was <span id="answerSpan"></span>
+</div>
+<button class="btn btn-info" onclick="givenMeRandomInt()" >Randomize!</button>
 
 @code {
 
@@ -45,9 +53,14 @@
     }
 
     async Task AskQuestion() {
-        var response = await JsRuntime.InvokeAsync<string>
-    ("askQuestion", questionText);
+        var response = await JsRuntime.InvokeAsync<string>("askQuestion", questionText);
 
-    await JsRuntime.InvokeVoidAsync("setElementTextById", "answerSpan", response);
+        await JsRuntime.InvokeVoidAsync("setElementTextById", "answerSpan", response);
+    }
+
+    [JSInvokable]
+    public static Task<int> GenerateRandomInt() 
+    {
+        return Task.FromResult(new Random().Next());
     }
 }

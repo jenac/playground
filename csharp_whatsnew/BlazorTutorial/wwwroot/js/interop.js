@@ -16,3 +16,10 @@ function setElementTextById(id, text) {
 function focusElement(element) {
     element.focus();
 }
+
+function givenMeRandomInt() {
+    DotNet.invokeMethodAsync('ServerBlazor', 'GenerateRandomInt')
+        .then(result => {
+            setElementTextById('randomNumberSpan', result);
+        });
+}
