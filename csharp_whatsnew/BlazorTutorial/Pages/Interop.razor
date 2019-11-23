@@ -30,7 +30,11 @@
 <div>
     The random number is <span id="randomNumberSpan"></span>
 </div>
+<span>Using Static Method</span><br>
 <button class="btn btn-info" onclick="givenMeRandomInt(1000)" >Randomize!</button>
+<br>
+<span>Using Instance Method</span><br>
+<button class="btn btn-info" @onclick="GenerateRandom" >Randomize!</button>
 
 @code {
 
@@ -56,6 +60,15 @@
         var response = await JsRuntime.InvokeAsync<string>("askQuestion", questionText);
 
         await JsRuntime.InvokeVoidAsync("setElementTextById", "answerSpan", response);
+    }
+
+    async Task GenerateRandom() {
+        await JsRuntime.InvokeVoidAsync("givenMeRandomIntUsingInstance", 100, DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public Task<int> GenerateRandomIntUsingInstacne(int max) {
+        return Task.FromResult(new Random().Next(max));
     }
 
     [JSInvokable]

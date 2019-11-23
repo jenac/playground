@@ -23,3 +23,10 @@ function givenMeRandomInt(maxIntSize) {
             setElementTextById('randomNumberSpan', result);
         });
 }
+
+function givenMeRandomIntUsingInstance(maxIntSize, dotnetInstance) {
+    dotnetInstance.invokeMethodAsync("GenerateRandomIntUsingInstacne", maxIntSize)
+        .then(result => {
+            setElementTextById('randomNumberSpan', result);
+        });
+}
