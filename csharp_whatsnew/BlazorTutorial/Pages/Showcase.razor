@@ -1,6 +1,7 @@
 ﻿@page "/showcase.me"
 
 @inject IJSRuntime JsRuntime
+@inject IAuthorizationService AuthorizationService
 @layout NoNavLayout
 
 <AuthorizeView>
@@ -9,6 +10,8 @@
         <ParentComponent AlertText="This is a parameter"></ParentComponent>
 
         <span id="userSpan"></span>
+        <br>
+        <span id="adminSpan"></span>
     </Authorized>
     <NotAuthorized>
         Please <a href="Identity/Account/Login">Login</a> First!
@@ -27,6 +30,11 @@
             var user = authState.User;
             var userName = user.Identity.Name;
             await JsRuntime.InvokeVoidAsync("setElementTextById", "userSpan", $"My name is {userName}");
+
+            var userIsAdmin = await AuthorizationService.AuthorizeAsync(user, "IsAdmin");
+            if (userIsAdmin.Succeeded) {
+                await JsRuntime.InvokeVoidAsync("setElementTextById", "adminSpan", "I am an Admin");
+            }
         }
     }
 }

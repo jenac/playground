@@ -15,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
+using BlazorTutorial.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlazorTutorial
 {
@@ -32,9 +34,17 @@ namespace BlazorTutorial
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlite("DataSource=app.db"));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddAuthorization(options => 
+                {
+                    options.AddPolicy("IsAdmin", policy => policy.AddRequirements(new EmailRequirement("admin.com")));
+
+                });
+            services.AddSingleton<IAuthorizationHandler, EmailAuthHandler>();
             services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
             services.AddSingleton<WeatherForecastService>();
             // services.AddSingleton<RandomService>();
