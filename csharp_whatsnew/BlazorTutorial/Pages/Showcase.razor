@@ -1,11 +1,14 @@
 ﻿@page "/showcase.me"
 
+@inject IJSRuntime JsRuntime
 @layout NoNavLayout
 
 <AuthorizeView>
     <Authorized>
         <h1>Show case</h1>
         <ParentComponent AlertText="This is a parameter"></ParentComponent>
+
+        <span id="userSpan"></span>
     </Authorized>
     <NotAuthorized>
         Please <a href="Identity/Account/Login">Login</a> First!
@@ -13,5 +16,17 @@
 </AuthorizeView>
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> authStateTask { get; set; }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender) 
+    {
+        if (firstRender) 
+        {
+            var authState = await authStateTask;
+            var user = authState.User;
+            var userName = user.Identity.Name;
+            await JsRuntime.InvokeVoidAsync("setElementTextById", "userSpan", $"My name is {userName}");
+        }
+    }
 }
