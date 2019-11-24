@@ -1,9 +1,16 @@
 ﻿@page "/showcase.me"
 
 @layout NoNavLayout
-<h1>Show case</h1>
 
-<ParentComponent AlertText="This is a parameter"></ParentComponent>
+<AuthorizeView>
+    <Authorized>
+        <h1>Show case</h1>
+        <ParentComponent AlertText="This is a parameter"></ParentComponent>
+    </Authorized>
+    <NotAuthorized>
+        Please <a href="Identity/Account/Login">Login</a> First!
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
 
