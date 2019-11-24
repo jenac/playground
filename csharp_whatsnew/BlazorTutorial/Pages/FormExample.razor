@@ -2,8 +2,9 @@
 @attribute [Authorize]
 @using System.Text.Json
 @using BlazorTutorial.Data
+@using BlazorTutorial.Services
 @inject IJSRuntime JsRuntime
-
+@inject VisitTrackingService VisitTrackingService
 <h1>Forms and Validation</h1>
 
 <EditForm Model="@jobApplication" OnValidSubmit="@SubmitJobApplication">
@@ -53,5 +54,15 @@
     private async Task TypeCheck(string currentValue)
     {
         await JsRuntime.InvokeVoidAsync("setElementTextById", "resultJson", $"Current value is {currentValue}");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender) 
+        {
+            await VisitTrackingService.TrackingVisitInLocal();
+            await VisitTrackingService.TrackingVisitInSession();
+            StateHasChanged();
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿@page "/showcase.me"
-
+@using BlazorTutorial.Shared
+@using BlazorTutorial.Services
 @inject IJSRuntime JsRuntime
 @inject IAuthorizationService AuthorizationService
+@inject VisitTrackingService VisitTrackingService
 @layout NoNavLayout
 
 <AuthorizeView>
@@ -26,6 +28,10 @@
     {
         if (firstRender) 
         {
+            await VisitTrackingService.TrackingVisitInLocal();
+            await VisitTrackingService.TrackingVisitInSession();
+            StateHasChanged();
+
             var authState = await authStateTask;
             var user = authState.User;
             var userName = user.Identity.Name;

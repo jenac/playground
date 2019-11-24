@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using BlazorTutorial.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 
 namespace BlazorTutorial
 {
@@ -50,6 +52,10 @@ namespace BlazorTutorial
             // services.AddSingleton<RandomService>();
             // services.AddTransient<RandomService>();
             services.AddScoped<RandomService>();
+
+            services.AddBlazoredSessionStorage();
+            services.AddBlazoredLocalStorage();
+            services.AddScoped<VisitTrackingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
