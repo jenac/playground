@@ -19,6 +19,9 @@ using BlazorTutorial.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
+using Blazor.Fluxor;
+using Blazor.Fluxor.ReduxDevTools;
+using Blazor.Fluxor.Routing;
 
 namespace BlazorTutorial
 {
@@ -42,10 +45,10 @@ namespace BlazorTutorial
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAuthorization(options => 
-                {
-                    options.AddPolicy("IsAdmin", policy => policy.AddRequirements(new EmailRequirement("admin.com")));
+            {
+                options.AddPolicy("IsAdmin", policy => policy.AddRequirements(new EmailRequirement("admin.com")));
 
-                });
+            });
             services.AddSingleton<IAuthorizationHandler, EmailAuthHandler>();
             services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
             services.AddSingleton<WeatherForecastService>();
@@ -56,6 +59,13 @@ namespace BlazorTutorial
             services.AddBlazoredSessionStorage();
             services.AddBlazoredLocalStorage();
             services.AddScoped<VisitTrackingService>();
+
+            services.AddFluxor(options => 
+            {
+                options.UseDependencyInjection(typeof(Startup).Assembly)
+                .AddMiddleware<ReduxDevToolsMiddleware>()
+                .AddMiddleware<RoutingMiddleware>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

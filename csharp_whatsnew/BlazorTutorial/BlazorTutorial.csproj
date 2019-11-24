@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Fluxor" Version="1.2.0-dotnet3.1.0-preview3.19555.2" />
     <PackageReference Include="Blazored.LocalStorage" Version="2.1.1" />
     <PackageReference Include="Blazored.SessionStorage" Version="1.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
