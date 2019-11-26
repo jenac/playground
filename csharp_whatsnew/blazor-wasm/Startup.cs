@@ -1,3 +1,4 @@
+using Blazor.Fluxor;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +8,9 @@ namespace blazor_wasm
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddFluxor(options => options
+		        .UseDependencyInjection(typeof(Startup).Assembly)
+	        );
         }
 
         public void Configure(IComponentsApplicationBuilder app)
