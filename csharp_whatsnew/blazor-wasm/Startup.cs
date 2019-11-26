@@ -9,8 +9,10 @@ namespace blazor_wasm
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddFluxor(options => options
-		        .UseDependencyInjection(typeof(Startup).Assembly)
-	        );
+                .UseDependencyInjection(typeof(Startup).Assembly)
+                .AddMiddleware<Blazor.Fluxor.ReduxDevTools.ReduxDevToolsMiddleware>()
+                .AddMiddleware<Blazor.Fluxor.Routing.RoutingMiddleware>()
+            );
         }
 
         public void Configure(IComponentsApplicationBuilder app)
