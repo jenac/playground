@@ -55,7 +55,6 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        //FetchDataState.Subscribe(this);
         Dispatcher.Dispatch(new GetForecastDataAction());
     }
 
