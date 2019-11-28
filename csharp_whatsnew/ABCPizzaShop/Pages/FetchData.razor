@@ -1,0 +1,75 @@
+﻿@page "/fetchdata"
+@using System.Collections.Generic;
+@inject HttpClient Http
+
+<h1>Orders</h1>
+
+<button class="btn btn-primary" @onclick="Refresh">Refresh</button>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Tracking</th>
+                <th>Name</th>
+                <th>Pizza</th>
+                <th>Drink</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var key in forecasts.Keys)
+            {
+                var forecast = forecasts[key];
+                <tr>
+                    <td>@UnixTimeStampToDateTime(forecast.CreatedAt).ToShortDateString()</td>
+                    <td>@forecast.TrackingNumber</td>
+                    <td>@forecast.Name</td>
+                    <td>@forecast.PizzaFlavor</td>
+                    <td>@forecast.Drink</td>
+                    <td>@forecast.Price</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Dictionary<string, WeatherForecast> forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetJsonAsync<Dictionary<string, WeatherForecast>>("https://abc-pizza-shop-xhxqfr.firebaseio.com/orders.json");
+    }
+
+    
+    public class WeatherForecast
+    {
+
+        public string TrackingNumber { get; set; }
+        public string Name { get; set; }
+        public string PizzaFlavor { get; set; }
+        public string Drink { get; set; }
+        public Decimal Price { get; set; }
+        public Double CreatedAt { get; set; }
+    }
+
+    public static DateTime UnixTimeStampToDateTime( double unixTimeStamp )
+    {
+        // Unix timestamp is seconds past epoch
+        System.DateTime dtDateTime = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
+        dtDateTime = dtDateTime.AddMilliseconds( unixTimeStamp ).ToLocalTime();
+        return dtDateTime;
+    }
+
+    public async void Refresh() {
+        forecasts = await Http.GetJsonAsync<Dictionary<string, WeatherForecast>>("https://abc-pizza-shop-xhxqfr.firebaseio.com/orders.json");
+    }
+}
