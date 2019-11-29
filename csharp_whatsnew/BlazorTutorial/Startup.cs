@@ -22,7 +22,7 @@ using Blazored.SessionStorage;
 using Blazor.Fluxor;
 using Blazor.Fluxor.ReduxDevTools;
 using Blazor.Fluxor.Routing;
-
+using ElectronNET.API;
 namespace BlazorTutorial
 {
     public class Startup
@@ -96,6 +96,8 @@ namespace BlazorTutorial
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
         }
     }
 }
