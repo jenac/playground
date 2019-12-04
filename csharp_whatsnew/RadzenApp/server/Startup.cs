@@ -48,6 +48,8 @@ namespace RadzenApp
 
             services.AddHttpClient();
 
+            services.AddScoped<PizzaShopService>();
+
             services.AddRazorPages();
             services.AddServerSideBlazor().AddHubOptions(o =>
             {

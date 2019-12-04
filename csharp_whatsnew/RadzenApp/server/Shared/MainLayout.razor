@@ -2,6 +2,7 @@
 
 @using Radzen
 @using Radzen.Blazor
+@using RadzenApp.Models.PizzaShop
 <RadzenDialog />
 <RadzenNotification />
 
@@ -29,6 +30,10 @@
 <RadzenSidebar @ref="sidebar0">
   <ChildContent>
     <RadzenPanelMenu style="height: 100%">
+      <ChildContent>
+        <RadzenPanelMenuItem Text="Orders" Path="orders">
+        </RadzenPanelMenuItem>
+      </ChildContent>
     </RadzenPanelMenu>
   </ChildContent>
 </RadzenSidebar>

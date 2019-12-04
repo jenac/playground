@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
+using RadzenApp.Models.PizzaShop;
 namespace RadzenApp.Layouts
 {
     public partial class LoginLayoutComponent : LayoutComponentBase
@@ -18,6 +19,9 @@ namespace RadzenApp.Layouts
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
+        [Inject]
+        protected PizzaShopService PizzaShop { get; set; }
+
 
         protected RadzenBody body0;
 
