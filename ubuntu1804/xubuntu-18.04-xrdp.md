@@ -1,3 +1,4 @@
+```
 sudo apt-get install xorgxrdp-hwe-18.04
 
 sudo apt install -y xrdp
@@ -36,3 +37,4 @@ else
 fi
 EOF
 sudo chmod a+x /usr/bin/light-locker
+```
