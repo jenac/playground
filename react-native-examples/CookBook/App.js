@@ -5,6 +5,7 @@ import { Ch0301 } from './components/Ch0301';
 import { Ch0303 } from './components/Ch0303';
 import { Ch0304 } from './components/Ch0304';
 import { Ch0401 } from './components/Ch0401';
+import { Ch0501 } from './components/Ch0501';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Ch0304></Ch0304>
       <Ch0304 name='customized'></Ch0304>
       <Ch0401></Ch0401>
+      <Ch0501></Ch0501>
       <Text>Open up App.js to start working on your app! What?</Text>
     </View>
   );
