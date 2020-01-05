@@ -6,7 +6,9 @@ import { Ch0303 } from './components/Ch0303';
 import { Ch0304 } from './components/Ch0304';
 import { Ch0401 } from './components/Ch0401';
 import { Ch0501 } from './components/Ch0501';
-
+import { Ch0502 } from './components/Ch0502';
+import { Ch0601Parent } from './components/Ch0601';
+import { Ch0602 } from './components/Ch0602';
 export default function App() {
   return (
     <View style={styles.container}>
@@ -19,6 +21,9 @@ export default function App() {
       <Ch0304 name='customized'></Ch0304>
       <Ch0401></Ch0401>
       <Ch0501></Ch0501>
+      <Ch0502></Ch0502>
+      <Ch0601Parent></Ch0601Parent>
+      <Ch0602></Ch0602>
       <Text>Open up App.js to start working on your app! What?</Text>
     </View>
   );
