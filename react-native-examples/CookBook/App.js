@@ -9,6 +9,7 @@ import { Ch0501 } from './components/Ch0501';
 import { Ch0502 } from './components/Ch0502';
 import { Ch0601Parent } from './components/Ch0601';
 import { Ch0602 } from './components/Ch0602';
+import { Ch0701 } from './components/Ch0701';
 export default function App() {
   return (
     <View style={styles.container}>
@@ -24,6 +25,7 @@ export default function App() {
       <Ch0502></Ch0502>
       <Ch0601Parent></Ch0601Parent>
       <Ch0602></Ch0602>
+      <Ch0701></Ch0701>
       <Text>Open up App.js to start working on your app! What?</Text>
     </View>
   );

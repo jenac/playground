@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export class Ch0601Parent extends Component {
     constructor(props) {
         super(props);
@@ -68,4 +68,3 @@ const styles = StyleSheet.create({
         color: '#fff'
     }
 });
-// AppRegistry.registerComponent('MyApp', () => Ch0601Parent);
