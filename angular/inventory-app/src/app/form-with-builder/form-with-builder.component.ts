@@ -22,6 +22,18 @@ export class FormWithBuilderComponent implements OnInit {
     })
 
     this.skuControl = this.myForm.controls['sku'];
+
+    this.skuControl.valueChanges.subscribe(
+      (value: string) => {
+        console.log('sku changed to', value)
+      }
+    )
+
+    this.myForm.valueChanges.subscribe(
+      (value: any) => {
+        console.log('form value changed to', value);
+      }
+    )
   }
 
   ngOnInit() {
