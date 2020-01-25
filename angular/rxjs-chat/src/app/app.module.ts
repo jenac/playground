@@ -9,6 +9,8 @@ import { ChatThreadComponent } from './chat-thread/chat-thread.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ChatNavBarComponent } from './chat-nav-bar/chat-nav-bar.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { FromNowPipe } from './pipes/from-now.pipe';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ChatMessageComponent } from './chat-message/chat-message.component';
     ChatThreadComponent,
     ChatPageComponent,
     ChatNavBarComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    FromNowPipe
   ],
   imports: [
     BrowserModule,
