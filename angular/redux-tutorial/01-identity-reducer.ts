@@ -8,16 +8,17 @@ interface Reducer<T> {
 }
 
 
-let reducer: Reducer<number>= (state: number, action: Action) => {
+let reducer: Reducer<number> = (state: number, action: Action) => {
 
-    if (action?.type == 'INC') {
-        return state + 1;
-    } 
-    if (action?.type == 'DEC') {
-        return state - 1;
+    switch (action?.type) {
+        case 'INC':
+            return state + 1;
+        case 'DEC':
+            return state - 1;
+        default:
+            return state;
     }
-    return state;
-} 
+}
 
 
 console.log(reducer(0, null));
