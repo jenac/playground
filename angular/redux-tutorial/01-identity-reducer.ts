@@ -7,6 +7,13 @@ interface Reducer<T> {
     (state: T, action: Action): T;
 }
 
+interface ListenCallback {
+    (): void;
+}
+
+interface UnsubscribeCallback {
+    (): void;
+}
 
 let reducer: Reducer<number> = (state: number, action: Action) => {
 
@@ -37,6 +44,7 @@ console.log(reducer(100, plus9));
 
 class Store<T> {
     private _state: T;
+    private _listeners: ListenCallback[] = [];
 
     constructor(
         private reducer: Reducer<T>,
@@ -51,6 +59,14 @@ class Store<T> {
 
     dispatch(action: Action): void {
         this._state = this.reducer(this._state, action);
+        this._listeners.forEach((listener: ListenCallback) => listener());
+    }
+
+    subscribe(listener: ListenCallback): UnsubscribeCallback {
+        this._listeners.push(listener);
+        return () => {
+            this._listeners = this._listeners.filter(l => l !== listener);
+        };
     }
 }
 
@@ -65,6 +81,21 @@ store.dispatch({ type: 'PLUS', payload: 7 });
 console.log(store.getState());
 
 store.dispatch({ type: 'DEC' });
+console.log(store.getState());
+
+console.log('**** SUBSCRIBE ****');
+let unscribe = store.subscribe(() => {
+    console.log('subscribed: ', store.getState());
+});
+
+store.dispatch({ type: 'INC'});
+store.dispatch({ type: 'INC'});
+
+store.dispatch({ type: 'DEC'});
+unscribe();
+
+store.dispatch({ type: 'DEC'});
+store.dispatch({ type: 'DEC'});
 console.log(store.getState());
 
 
