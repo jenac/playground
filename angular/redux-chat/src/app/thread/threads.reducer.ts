@@ -12,13 +12,13 @@ export interface ThreadsState {
   currentThreadId?: string;
 };
 
-const initialState: ThreadsState = {
+export const initialState: ThreadsState = {
   ids: [],
   currentThreadId: null,
   entities: {}
 };
 
-export const ThreadReducer = (state: ThreadsState = initialState, action: Action): ThreadsState => {
+export const ThreadsReducer = (state: ThreadsState = initialState, action: Action): ThreadsState => {
   switch(action.type) {
     case ThreadActions.ADD_THREAD: {
       const thread = (<ThreadActions.AddThreadAction>action).thread;

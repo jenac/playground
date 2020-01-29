@@ -1,13 +1,12 @@
 import { User } from './user.model';
 import { Action } from 'redux';
 import * as UserActions from './user.actions';
-import { stat } from 'fs';
 
 export interface UsersState {
   currentUser: User
 };
 
-const initialState: UsersState = {
+export const initialState: UsersState = {
   currentUser: null
 };
 
