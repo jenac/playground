@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { AppState } from './app.reducer';
 import { Thread } from './thread/thread.model';
 import { Message } from './message/message.model';
+import { UsersState } from './user/users.reducer';
 
 export const getThreadsState = (state): ThreadsState => state.threads;
 export const getThreadsEntities = createSelector(
@@ -43,3 +44,9 @@ export const getAllMessages = createSelector(
         [])
         .sort((m1, m2) => m1.sentAt - m2.sentAt)
 ); // sort them by time
+
+export const getUsersState = (state): UsersState => state.users;
+
+export const getCurrentUser = createSelector(
+  getUsersState,
+  ( state: UsersState ) => state.currentUser );

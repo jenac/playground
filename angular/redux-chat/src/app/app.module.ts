@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
@@ -9,6 +10,7 @@ import { ChatThreadComponent } from './chat-thread/chat-thread.component';
 import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { appStoreProviders } from './app.store';
+import { FromNowPipe } from './pipes/from-now.pipe';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { appStoreProviders } from './app.store';
     ChatPageComponent,
     ChatThreadComponent,
     ChatThreadsComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    FromNowPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [appStoreProviders],
   bootstrap: [AppComponent]
