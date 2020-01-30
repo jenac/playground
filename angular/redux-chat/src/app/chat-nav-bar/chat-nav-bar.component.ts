@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Inject } from '@angular/core';
+import { AppStore } from '../app.store';
+import * as Redux from 'redux';
+import { AppState } from '../app.reducer';
+import { getUnreadMessagesCount } from '../app.reselect';
 @Component({
-  selector: 'app-chat-nav-bar',
+  selector: 'chat-nav-bar',
   templateUrl: './chat-nav-bar.component.html',
   styleUrls: ['./chat-nav-bar.component.css']
 })
-export class ChatNavBarComponent implements OnInit {
+export class ChatNavBarComponent {
+  
+  unreadMessagesCount: number;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>) { 
+    store.subscribe(() => this.updateState());
+    this.updateState();
   }
 
+  updateState(): void {
+    this.unreadMessagesCount = getUnreadMessagesCount(this.store.getState());
+  }
 }
