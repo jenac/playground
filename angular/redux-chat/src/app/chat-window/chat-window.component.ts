@@ -38,11 +38,11 @@ export class ChatWindowComponent {
 
   sendMessage():void {
     this.store.dispatch(ThreadActions.addMessage(
-      this.currentUser,
+      this.currentThread,
       {
         author: this.currentUser,
         isRead: true,
-        text: this.draftMessage
+        text: this.draftMessage.text
       }
     ));
     this.draftMessage = { text: '' };
