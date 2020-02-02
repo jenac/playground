@@ -6,6 +6,7 @@ import { StyleEncapsulationComponent } from './style-encapsulation/style-encapsu
 import { NativeEncapsulationComponent } from './native-encapsulation/native-encapsulation.component';
 import { PopupDirective } from './popup.directive';
 import { PopupDemoComponent } from './popup-demo/popup-demo.component';
+import { PopupDemo2Component } from './popup-demo2/popup-demo2.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PopupDemoComponent } from './popup-demo/popup-demo.component';
     StyleEncapsulationComponent,
     NativeEncapsulationComponent,
     PopupDirective,
-    PopupDemoComponent
+    PopupDemoComponent,
+    PopupDemo2Component
   ],
   imports: [
     BrowserModule

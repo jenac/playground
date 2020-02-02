@@ -1,12 +1,17 @@
-import { Directive } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[popup]'
 })
 export class PopupDirective {
+  @Input() message: string;
 
-  constructor() { 
-    console.log('Drective found');
+  constructor(_elementRef: ElementRef) { 
+    console.log(_elementRef);
+  }
+
+  @HostListener('click') displayMessage(): void {
+    alert(this.message);
   }
 
 }
