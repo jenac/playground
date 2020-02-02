@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-popup-demo',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupDemoComponent implements OnInit {
 
-  constructor() { }
+  constructor(_elementRef: ElementRef) {
+    console.log(_elementRef);
+  }
 
   ngOnInit() {
   }
