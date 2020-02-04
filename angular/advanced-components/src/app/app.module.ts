@@ -11,6 +11,8 @@ import { PopupDemo3Component } from './popup-demo3/popup-demo3.component';
 import { ContentProjectionComponent } from './content-projection/content-projection.component';
 import { MessageComponent } from './content-projection/message.component';
 import { ContentTabsDemoComponent } from './content-tabs-demo/content-tabs-demo.component';
+import { ContentTabComponent } from './content-tabs-demo/content-tab.component';
+import { ContentTabsetComponent } from './content-tabs-demo/content-tabset.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ContentTabsDemoComponent } from './content-tabs-demo/content-tabs-demo.
     PopupDemo3Component,
     ContentProjectionComponent,
     MessageComponent,
-    ContentTabsDemoComponent
+    ContentTabComponent,
+    ContentTabsDemoComponent,
+    ContentTabsetComponent,
   ],
   imports: [
     BrowserModule
