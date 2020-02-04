@@ -8,6 +8,9 @@ import { PopupDirective } from './popup.directive';
 import { PopupDemoComponent } from './popup-demo/popup-demo.component';
 import { PopupDemo2Component } from './popup-demo2/popup-demo2.component';
 import { PopupDemo3Component } from './popup-demo3/popup-demo3.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
+import { MessageComponent } from './content-projection/message.component';
+import { ContentTabsDemoComponent } from './content-tabs-demo/content-tabs-demo.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { PopupDemo3Component } from './popup-demo3/popup-demo3.component';
     PopupDirective,
     PopupDemoComponent,
     PopupDemo2Component,
-    PopupDemo3Component
+    PopupDemo3Component,
+    ContentProjectionComponent,
+    MessageComponent,
+    ContentTabsDemoComponent
   ],
   imports: [
     BrowserModule
