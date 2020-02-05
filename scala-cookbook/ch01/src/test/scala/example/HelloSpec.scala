@@ -38,4 +38,16 @@ class HelloSpec extends FlatSpec with Matchers {
     "100".toInt(8) shouldBe 64
     "100".toInt(16) shouldBe 256
   }
+
+  it should "2.06" in {
+    val b = BigInt(1234567890)
+    (b * b).toString shouldBe "1524157875019052100"
+    (b + b).toString shouldBe "2469135780"
+    b.isValidByte shouldBe false
+    b.isValidChar shouldBe false
+    val c = if (b.isValidShort) b.toShort else None
+    c shouldBe None
+    val d = if (b.isValidInt) b.toInt else None
+    d shouldBe 1234567890 //not Some(1234567890) ?
+  }
 }
