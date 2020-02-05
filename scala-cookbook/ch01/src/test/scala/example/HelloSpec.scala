@@ -1,6 +1,8 @@
 package example
 
 import org.scalatest._
+
+import scala.util.Random
 class HelloSpec extends FlatSpec with Matchers {
   "The Hello object" should "say hello" in {
     Hello.greeting shouldEqual "hello"
@@ -50,4 +52,15 @@ class HelloSpec extends FlatSpec with Matchers {
     val d = if (b.isValidInt) b.toInt else None
     d shouldBe 1234567890 //not Some(1234567890) ?
   }
+
+  it should "2.07" in {
+    val r = Random
+    r.nextInt()
+    r.nextDouble
+
+    r.nextInt(100) < 100 shouldBe true
+    r.nextInt(100) > 0 shouldBe true
+  }
+
+
 }
