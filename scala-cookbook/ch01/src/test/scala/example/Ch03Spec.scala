@@ -49,4 +49,17 @@ class Ch03Spec extends FlatSpec with Matchers {
       if i %2 == 0
     } println(i)
   }
+
+  it should "3.04" in {
+    val names = Array("chris", "jenac", "tony")
+    val capNames = for (e <- names) yield e.capitalize
+    capNames.contains("Chris") shouldBe true
+    capNames.contains("Jenac") shouldBe true
+    capNames.contains("Tony") shouldBe true
+
+    val lengths = for(e <- names) yield e.length
+    lengths.foreach(println)
+  }
+
+
 }
