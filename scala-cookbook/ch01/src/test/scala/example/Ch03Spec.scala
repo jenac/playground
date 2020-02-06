@@ -39,4 +39,14 @@ class Ch03Spec extends FlatSpec with Matchers {
       k <- 1 to 5
     } println(s"i=$i, j=$j, k=$k")
   }
+
+  it should "3.03" in {
+    for (i <- 1 to 10 if i % 2 == 0) println(i)
+    for {
+      i <- 1 to 10
+      if i > 3
+      if i < 6
+      if i %2 == 0
+    } println(i)
+  }
 }
