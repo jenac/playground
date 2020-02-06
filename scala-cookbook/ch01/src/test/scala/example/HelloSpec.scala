@@ -1,5 +1,7 @@
 package example
 
+import java.util.Locale
+
 import org.scalatest._
 
 import scala.util.Random
@@ -62,5 +64,34 @@ class HelloSpec extends FlatSpec with Matchers {
     r.nextInt(100) > 0 shouldBe true
   }
 
+  it should "2.08" in {
+    (1 to 10).size shouldBe 10
+    (1 to 10 by 2).size shouldBe 5
+    (1 to 10 by 3).size shouldBe 4
+    for (i <- 1 to 5) println(i)
+    println("----------------------------------------")
+    for (i <- 1 until 5) println(i) //no 5 printed
+    (1 to 5).toArray.foreach(println)
+    println("----------------------------------------")
+    (1 to 10).toList.foreach(println)
+  }
 
+  it should "2.09" in {
+    val pi = scala.math.Pi
+    f"$pi%1.5f" shouldBe "3.14159"
+    f"$pi%1.2f" shouldBe "3.14"
+    f"$pi%06.2f" shouldBe "003.14"
+    "%06.2f".format(pi) shouldBe "003.14"
+
+    val formatter = java.text.NumberFormat.getInstance
+    formatter.format(10000) shouldBe "10,000"
+    formatter.format(1000000) shouldBe "1,000,000"
+
+    val localeDe = new Locale("de", "DE")
+    val formatterDe = java.text.NumberFormat.getInstance(localeDe)
+    formatterDe.format(1000000) shouldBe "1.000.000"
+
+    val formaterC = java.text.NumberFormat.getCurrencyInstance
+    formaterC.format(1000000.99) shouldBe "$1,000,000.99"
+  }
 }
