@@ -171,4 +171,27 @@ class Ch03Spec extends FlatSpec with Matchers {
     }
     matchOddEven(2) shouldBe "even"
   }
+
+  it should "3.09 multi case return a value" in {
+    def isTrue(a: Any) = a match {
+      case 0 | "" => false
+      case _ => true
+    }
+
+    isTrue(0) shouldBe false
+    isTrue("xxx") shouldBe true
+  }
+
+  it should "3.10 default case can be _ or any variable name" in {
+    def defaultCase(i: Int) = i match  {
+      case 1 => "One"
+      case 2 => "Two"
+      case anyValue => s"Unknown $anyValue"
+    }
+
+    defaultCase(1) shouldBe "One"
+    defaultCase(128) shouldBe "Unknown 128"
+
+
+  }
 }
