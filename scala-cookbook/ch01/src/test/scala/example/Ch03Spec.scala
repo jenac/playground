@@ -159,7 +159,16 @@ class Ch03Spec extends FlatSpec with Matchers {
     )
 
     monthNumberMap(2) shouldBe "FEB"
-//    monthNumberMap(128) shouldBe "FEB" //throw exception
+    //    monthNumberMap(128) shouldBe "FEB" //throw exception
     monthNumberMap.get(128) shouldBe None
+  }
+
+  it should "3.08 multi case" in {
+    def matchOddEven(i: Int) = i match {
+      case 1 | 3 | 5 | 7 | 9 => "odd"
+      case 2 | 4 | 6 | 8 | 10 => "even"
+      case _ => "invalid"
+    }
+    matchOddEven(2) shouldBe "even"
   }
 }
