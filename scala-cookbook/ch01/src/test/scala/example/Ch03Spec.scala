@@ -1,5 +1,7 @@
 package example
 
+import java.io.{FileInputStream, FileNotFoundException, FileOutputStream, IOException}
+
 import org.scalatest._
 
 import scala.util.control.Breaks
@@ -221,10 +223,10 @@ class Ch03Spec extends FlatSpec with Matchers {
     }
 
     echoWhatYouGaveMe(List(Dog("A"), Dog("B"), Dog("C"))) shouldBe "got a List: List(Dog(A), Dog(B), Dog(C))"
-    echoWhatYouGaveMe(Map("a"-> Dog("A"), "b" -> Dog("B"))) shouldBe "Map(a -> Dog(A), b -> Dog(B))"
+    echoWhatYouGaveMe(Map("a" -> Dog("A"), "b" -> Dog("B"))) shouldBe "Map(a -> Dog(A), b -> Dog(B))"
 
     def patterWithVariable(x: Any): String = x match {
-      case list @ List(1, _*) => s"A: $list"
+      case list@List(1, _*) => s"A: $list"
       case list: List[_] => s"B: $list"
       case _ => "unknown"
     }
@@ -261,5 +263,102 @@ class Ch03Spec extends FlatSpec with Matchers {
 
     speak(Person("Trump")) shouldBe "MAGA"
     speak(Person("Anyone")) shouldBe "Nothing"
+  }
+
+  it should "3.14 match instance of" in {
+    case class Member()
+    def isMember(p: Any) = p match {
+      case m: Member => true
+      case _ => false
+    }
+
+    isMember(Member()) shouldBe true
+    isMember("What") shouldBe false
+  }
+
+  it should "3.15 matching list" in {
+    val x = List(1, 2, 3)
+    val y = 1 :: 2 :: 3 :: Nil
+    x shouldBe y
+
+    def headAndRest(v: List[String]): String = v match {
+      case h :: r => s"header: $h, rest: $r"
+      case Nil => "nil"
+    }
+
+    headAndRest("Apple" :: "Banana" :: "Orange" :: Nil) shouldBe "header: Apple, rest: List(Banana, Orange)"
+    headAndRest(Nil) shouldBe "nil"
+
+    def sum(list: List[Int]): Int = list match {
+      case Nil => 0
+      case n :: rest => n + sum(rest)
+    }
+
+    sum(List(1, 2, 3)) shouldBe 6
+
+    def multiply(list: List[Int]): Int = list match {
+      case Nil => 1
+      case n :: rest => n * multiply(rest)
+    }
+
+    multiply(List(1, 2, 3, 4, 5)) shouldBe 120
+  }
+
+  it should "3.16 matching in try/catch" in {
+    //simulate exception throw
+    def openFile(s: String) = s match {
+      case "io" => throw new IOException("mocked")
+      case "notFound" => throw new FileNotFoundException("mocked")
+      case _ => throw new Exception("mocked")
+    }
+
+    def tryOpenFile(s: String) = try{
+      openFile(s)
+    } catch {
+      case e: FileNotFoundException => "FileNotFound"
+      case e: IOException => "IOException"
+      case _: Throwable => "Exception"
+    }
+
+    tryOpenFile("io") shouldBe "IOException"
+    tryOpenFile("notFound") shouldBe "FileNotFound"
+    tryOpenFile("a") shouldBe "Exception"
+  }
+
+  it should "3.17 try/catch/finally" in {
+    //code demo only
+    //copy file
+    var in = None: Option[FileInputStream]
+    var out = None: Option[FileOutputStream]
+
+    try {
+      in = Some(new FileInputStream("/tmp/a.txt"))
+      out = Some(new FileOutputStream("/tmp/b.txt"))
+
+      var c = 0
+      while ({c = in.get.read; c!= 1}) {
+        out.get.write(c)
+      }
+    } catch {
+      case e: IOException => e.printStackTrace()
+    } finally {
+      println("enter finally...")
+      if (in.isDefined) in.get.close()
+      if (out.isDefined) out.get.close()
+    }
+
+    //better way:
+//    try {
+//      in = Some(new FileInputStream("/tmp/a.txt"))
+//      out = Some(new FileOutputStream("/tmp/b.txt"))
+//      in.foreach( inputStream =>
+//        out.foreach {
+//          outStream =>
+//            var c = 0
+//            while ({c=inputStream.read; c!= 1}) {
+//              outStream.write(c)
+//            }
+//        })
+//    } catch ...
   }
 }
