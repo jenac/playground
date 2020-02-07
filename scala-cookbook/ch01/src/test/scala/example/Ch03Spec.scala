@@ -5,6 +5,7 @@ import org.scalatest._
 import scala.util.control.Breaks
 
 class Ch03Spec extends FlatSpec with Matchers {
+
   it should "3.01" in {
     val a = Array("apple", "banana", "orange")
     for (e <- a) {
@@ -101,7 +102,6 @@ class Ch03Spec extends FlatSpec with Matchers {
         }
       }
     }
-
   }
 
   it should "factorial" in {
@@ -169,6 +169,7 @@ class Ch03Spec extends FlatSpec with Matchers {
       case 2 | 4 | 6 | 8 | 10 => "even"
       case _ => "invalid"
     }
+
     matchOddEven(2) shouldBe "even"
   }
 
@@ -183,7 +184,7 @@ class Ch03Spec extends FlatSpec with Matchers {
   }
 
   it should "3.10 default case can be _ or any variable name" in {
-    def defaultCase(i: Int) = i match  {
+    def defaultCase(i: Int) = i match {
       case 1 => "One"
       case 2 => "Two"
       case anyValue => s"Unknown $anyValue"
@@ -191,7 +192,74 @@ class Ch03Spec extends FlatSpec with Matchers {
 
     defaultCase(1) shouldBe "One"
     defaultCase(128) shouldBe "Unknown 128"
+  }
 
+  it should "3.11 matching expression" in {
+    case class Person(first: String, last: String)
+    case class Dog(name: String)
+    def echoWhatYouGaveMe(x: Any): String = x match {
+      case 0 => "zero"
+      case true => "true"
+      case "hello" => "hello, world"
+      case Nil => "empty List"
+      case List(0, _, _) => "List with 0 as head, 3 elements"
+      case List(0, _*) => "List with 0 as head, any number of elements"
+      case Vector(1, _*) => "Vector with 0 as head, any number of elements"
+      case (a, b) => s"Tuple ($a, $b)"
+      case (a, b, c) => s"Tuple ($a, $b, $c)"
+      case Person(first, "James") => s"$first, James"
+      case Dog("Akka") => "dog named Akka"
+      case s: String => s"got a String: $s"
+      case i: Int => s"got a Int: $i"
+      case f: Float => s"got a Float: $f"
+      case a: Array[Int] => s"got a array of Int: ${a.mkString(",")}"
+      case as: Array[String] => s"got a array of String: ${as.mkString(",")}"
+      case d: Dog => s"got a dog: ${d.name}"
+      case list: List[_] => s"got a List: $list"
+      case m: Map[_, _] => m.toString
+      case _ => "Unknown"
+    }
 
+    echoWhatYouGaveMe(List(Dog("A"), Dog("B"), Dog("C"))) shouldBe "got a List: List(Dog(A), Dog(B), Dog(C))"
+    echoWhatYouGaveMe(Map("a"-> Dog("A"), "b" -> Dog("B"))) shouldBe "Map(a -> Dog(A), b -> Dog(B))"
+
+    def patterWithVariable(x: Any): String = x match {
+      case list @ List(1, _*) => s"A: $list"
+      case list: List[_] => s"B: $list"
+      case _ => "unknown"
+    }
+
+    patterWithVariable(List(0, 1, 2)) shouldBe "B: List(0, 1, 2)"
+    patterWithVariable(List(1, 2, 3)) shouldBe "A: List(1, 2, 3)"
+  }
+
+  it should "3.12 matching case class" in {
+    trait Animal
+    case class Dog(name: String) extends Animal
+    case class Cat(name: String) extends Animal
+    case object WoodPecker extends Animal
+
+    def whatAnimal(x: Animal): String = x match {
+      case Dog(dog) => s"Dog: $dog"
+      case _: Cat => "Just a Cat"
+      case WoodPecker => "A WoodPecker"
+      case _ => "Other Animals"
+    }
+
+    whatAnimal(Dog("haha")) shouldBe "Dog: haha"
+    whatAnimal(Cat("whatever")) shouldBe "Just a Cat"
+    whatAnimal(WoodPecker) shouldBe "A WoodPecker"
+  }
+
+  it should "3.13 case if" in {
+    case class Person(name: String)
+    def speak(p: Person) = p match {
+      case Person(name) if name == "Trump" => "MAGA"
+      case Person(name) if name == "Obama" => "AAAA"
+      case _ => "Nothing"
+    }
+
+    speak(Person("Trump")) shouldBe "MAGA"
+    speak(Person("Anyone")) shouldBe "Nothing"
   }
 }
