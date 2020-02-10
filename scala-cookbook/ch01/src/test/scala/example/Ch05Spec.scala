@@ -36,6 +36,38 @@ class Ch05Spec extends FlatSpec with Matchers {
 
       //def helloHuman = super[Human].hello
     }
+  }
 
+  "5.09" should "chain/fluent syntax" in {
+    //if class will be extended, return type should be this.type
+    class Person {
+      protected var fname = ""
+      protected var lname = ""
+
+      def setFirstName(firstName: String): this.type = {
+        fname = firstName
+        this
+      }
+
+      def setLastName(lastName: String): this.type = {
+        lname = lastName
+        this
+      }
+    }
+
+    class Employee extends Person {
+      protected var role = ""
+
+      def setRole(roleName: String): this.type = {
+        role = roleName
+        this
+      }
+
+      override def toString: String = s"first: $fname, last: $lname, role: $role"
+    }
+
+    val e = new Employee
+
+    e.setFirstName("Jen").setLastName("Ac").setRole("Owner").toString shouldBe "first: Jen, last: Ac, role: Owner"
   }
 }
