@@ -2,6 +2,8 @@ package example
 
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.collection.mutable.ArrayBuffer
+
 
 class Ch10Spec extends FlatSpec with Matchers {
   "10.11" should "zipWithInex and zip" in {
@@ -138,6 +140,77 @@ class Ch10Spec extends FlatSpec with Matchers {
     z shouldBe List((1, "One"), (2, "Two"))
 
     val uz = z.unzip
-    uz shouldBe (List(1, 2),List("One", "Two"))
+    uz shouldBe(List(1, 2), List("One", "Two"))
+  }
+
+  "10.20" should "go through collection and compare adjacent elements" in {
+    val nums = Array(1, 2, 3, 4, 5)
+    val sum = nums.reduceLeft(_ + _)
+    sum shouldBe 15
+
+    val product = nums.reduceLeft(_ * _)
+    product shouldBe 120
+
+    val min = nums.reduceLeft(_ min _)
+    min shouldBe 1
+
+    val max = nums.reduceLeft(_ max _)
+    max shouldBe 5
+
+    val floats = Array(1.0, 2.0, 3.0)
+    val left = floats.reduceLeft(_ / _)
+    left shouldBe 0.16666666666666666 //(1.0/2.0)/3.0
+    val right = floats.reduceRight(_ / _)
+    right shouldBe 1.5 //(3.0/2.0)/1.0
+
+    //seed = 1
+    val sl = nums.scanLeft(1)(_ * _)
+    sl shouldBe Array(1, 1, 2, 6, 24, 120)
+    val sr = nums.scanRight(1)(_ * _)
+    sr shouldBe Array(120, 120, 60, 20, 5, 1)
+    //seed = 10
+    val sl10 = nums.scanLeft(10)(_ * _)
+    sl10 shouldBe Array(10, 10, 20, 60, 240, 1200)
+    val sr10 = nums.scanRight(10)(_ * _)
+    sr10 shouldBe Array(1200, 1200, 600, 200, 50, 10)
+  }
+
+  "10.22" should "merge 2 collections" in {
+    val a = ArrayBuffer(1, 2, 3) //mutable
+    a ++= Seq(4, 5)
+    a shouldBe ArrayBuffer(1, 2, 3, 4, 5) //immutable
+
+    val b = Array(1, 2, 3) //immutable
+    val c = Array(4, 5, 6) //immutable
+    val d = b ++ c
+    d shouldBe Array(1, 2, 3, 4, 5, 6)
+
+    val a1 = Array(1, 2, 3, 4, 5)
+    val b1 = Array(4, 5, 6, 7, 8)
+    val c1 = a1.intersect(b1)
+    c1 shouldBe Array(4, 5)
+    val d1 = a1.union(b1)
+    d1 shouldBe Array(1, 2, 3, 4, 5, 4, 5, 6, 7, 8)
+    val d2 = a1.union(b1).distinct
+    d2 shouldBe Array(1, 2, 3, 4, 5, 6, 7, 8)
+    val e1 = a1.diff(b1)
+    e1 shouldBe Array(1, 2, 3)
+    val e2 = b1.diff(a1)
+    e2 shouldBe Array(6, 7, 8)
+
+    val f1 = Array.concat(a1, b1)
+    f1 shouldBe Array(1, 2, 3, 4, 5, 4, 5, 6, 7, 8)
+
+    val l1 = List(1, 2, 3)
+    val l2 = List(4, 5, 6)
+    val l3 = l1 ::: l2
+    l3 shouldBe List(1, 2, 3, 4, 5, 6)
+  }
+
+  "10.23" should "zip igore longer one" in {
+    val products = List("pizza", "soda", "fruits")
+    val prices = List(5.99, 0.99, 1.99, 3.27) //3.27 will be ignored
+    val productAndPrices = products.zip(prices)
+    productAndPrices shouldBe List(("pizza", 5.99), ("soda", 0.99), ("fruits", 1.99))
   }
 }
