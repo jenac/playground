@@ -30,19 +30,19 @@ class Ch08Spec extends FlatSpec with Matchers {
     }
 
     // the following fail. Since StarShipCore can only used for Starship's sub classes
-//    class EnterpriseFail extends StarShipCore {
-//
-//    }
+    //    class EnterpriseFail extends StarShipCore {
+    //
+    //    }
   }
 
   "8.07" should "limit trait use with class having certain method" in {
     trait WarpCore {
-      this: { def mustHave(password: String): Boolean } =>
+      this: {def mustHave(password: String): Boolean} =>
       def usage: String = "Anyway"
     }
 
     class Warp extends WarpCore {
-      def mustHave(someString: String) : Boolean = true //must have this method to extend trait WarpCore
+      def mustHave(someString: String): Boolean = true //must have this method to extend trait WarpCore
     }
   }
 

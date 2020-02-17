@@ -312,7 +312,7 @@ class Ch03Spec extends FlatSpec with Matchers {
       case _ => throw new Exception("mocked")
     }
 
-    def tryOpenFile(s: String) = try{
+    def tryOpenFile(s: String) = try {
       openFile(s)
     } catch {
       case e: FileNotFoundException => "FileNotFound"
@@ -336,7 +336,9 @@ class Ch03Spec extends FlatSpec with Matchers {
       out = Some(new FileOutputStream("/tmp/b.txt"))
 
       var c = 0
-      while ({c = in.get.read; c!= 1}) {
+      while ( {
+        c = in.get.read; c != 1
+      }) {
         out.get.write(c)
       }
     } catch {
@@ -348,17 +350,17 @@ class Ch03Spec extends FlatSpec with Matchers {
     }
 
     //better way:
-//    try {
-//      in = Some(new FileInputStream("/tmp/a.txt"))
-//      out = Some(new FileOutputStream("/tmp/b.txt"))
-//      in.foreach( inputStream =>
-//        out.foreach {
-//          outStream =>
-//            var c = 0
-//            while ({c=inputStream.read; c!= 1}) {
-//              outStream.write(c)
-//            }
-//        })
-//    } catch ...
+    //    try {
+    //      in = Some(new FileInputStream("/tmp/a.txt"))
+    //      out = Some(new FileOutputStream("/tmp/b.txt"))
+    //      in.foreach( inputStream =>
+    //        out.foreach {
+    //          outStream =>
+    //            var c = 0
+    //            while ({c=inputStream.read; c!= 1}) {
+    //              outStream.write(c)
+    //            }
+    //        })
+    //    } catch ...
   }
 }

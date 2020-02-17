@@ -24,8 +24,11 @@ class Ch05Spec extends FlatSpec with Matchers {
 
     class Child extends Human with Mother with Father {
       def helloSuper = super.hello
+
       def helloMonther = super[Mother].hello
+
       def helloFather = super[Father].hello
+
       def helloHuman = super[Human].hello
     }
 
