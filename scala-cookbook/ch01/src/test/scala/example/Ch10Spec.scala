@@ -213,4 +213,90 @@ class Ch10Spec extends FlatSpec with Matchers {
     val productAndPrices = products.zip(prices)
     productAndPrices shouldBe List(("pizza", 5.99), ("soda", 0.99), ("fruits", 1.99))
   }
+
+  "10.24" should "view usage" in {
+    println("starting...")
+    val instant = (1 to 1000).map { e =>
+      Thread.sleep(10)
+      e * 2
+    }
+    println("instant takes time")
+
+    val view = (1 to 1000).view.map { e =>
+      Thread.sleep(10)
+      e * 2
+    }
+    println(("view returns immediately"))
+  }
+
+  "10.25" should "use range" in {
+    val a = Array.range(1, 5)
+    a shouldBe Array(1, 2, 3, 4)
+
+    val b = List.range(1, 10)
+    b shouldBe List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+    val c = Vector.range(0, 10, 2)
+    c shouldBe Vector(0, 2, 4, 6, 8)
+
+    val d = (1 to 5).toList
+    d shouldBe List(1, 2, 3, 4, 5)
+
+    val e = (1 until 5).toList
+    e shouldBe List(1, 2, 3, 4)
+
+    val f = (1 to 10).by(2).toList
+    f shouldBe List(1, 3, 5, 7, 9)
+
+    val g = ('a' to 'f').toList
+    g shouldBe List('a', 'b', 'c', 'd', 'e', 'f')
+  }
+
+  "10.28" should "using sort" in {
+    val rawNums = List(3, 6, 2, 9, 1)
+    val a = rawNums.sorted
+    a shouldBe List(1, 2, 3, 6, 9)
+
+    val b = rawNums.sortWith(_ > _)
+    b shouldBe List(9, 6, 3, 2, 1)
+
+    val raw = List("banana", "pear", "apple", "orange")
+    val c = raw.sorted
+    c shouldBe List("apple", "banana", "orange", "pear")
+
+    val d = raw.sortWith(_ > _)
+    d shouldBe List("pear", "orange", "banana", "apple")
+
+    val e = raw.sortWith(_.length < _.length)
+    e shouldBe List("pear", "apple", "banana", "orange")
+
+    class Person(var name: String) extends Ordered[Person] {
+      override def compare(that: Person): Int = {
+        if (this.name == that.name)
+          0
+        else if (this.name > that.name)
+          1
+        else
+          -1
+      }
+    }
+
+    val p1 = new Person("Tyler")
+    val p2 = new Person("James")
+    val p3 = new Person("Tom")
+    val p4 = new Person("Peter")
+    val personList = List(p1, p2, p3, p4)
+    val personSorted = personList.sorted
+    personSorted shouldBe List(p2, p4, p3, p1)
+  }
+
+  "10.29" should "mkString" in {
+    val a = Array("apple", 7897, "orange", 1234)
+    val s = a.mkString
+    s shouldBe "apple7897orange1234"
+    val sp = a.mkString(",")
+    sp shouldBe "apple,7897,orange,1234"
+    val swithpresufix = a.mkString("{", ",", "}")
+    swithpresufix shouldBe "{apple,7897,orange,1234}"
+  }
 }
