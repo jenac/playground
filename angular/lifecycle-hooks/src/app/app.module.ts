@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 
 import { AppComponent } from './app.component';
 import { OnInitComponent } from './on-init/on-init.component';
@@ -10,7 +11,8 @@ import { OnInitComponent } from './on-init/on-init.component';
     OnInitComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

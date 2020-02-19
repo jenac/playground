@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  display: boolean;
   title = 'lifecycle-hooks';
+
+  constructor() {
+    this.display = true;
+  }
+
+  toggle(): void {
+    this.display = ! this.display;
+  }
 }
