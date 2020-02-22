@@ -5,9 +5,9 @@ ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
-lazy val root = (project in file("."))
+lazy val root = (project in file("ch01to12"))
   .settings(
-    name := "ch01",
+    name := "ch01to12",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += akka
   )
