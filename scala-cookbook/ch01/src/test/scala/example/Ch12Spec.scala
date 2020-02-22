@@ -1,12 +1,11 @@
 package example
 
 import java.io.{BufferedWriter, File, FileInputStream, FileOutputStream, FileWriter, IOException, PrintWriter}
-
-import org.scalatest.{FlatSpec, Matchers}
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scala.io.Source
 
-class Ch12Spec extends FlatSpec with Matchers {
+class Ch12Spec extends AnyFlatSpec with Matchers {
   "12.01" should "open and read files" in {
     val filename = "/home/lihe/Projects/playground/scala-cookbook/ch01/src/test/scala/example/Ch12Spec.scala"
 

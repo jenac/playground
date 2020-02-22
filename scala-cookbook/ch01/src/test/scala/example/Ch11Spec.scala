@@ -1,12 +1,12 @@
 package example
 
-import org.scalatest.{FlatSpec, Matchers}
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scala.collection.immutable.{ListMap, SortedSet}
 import scala.collection.mutable
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
-class Ch11Spec extends FlatSpec with Matchers {
+class Ch11Spec extends AnyFlatSpec with Matchers {
   "11.01" should "create List" in {
     val a = 1 :: 2 :: 3 :: Nil
     a shouldBe List(1, 2, 3)

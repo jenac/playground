@@ -1,8 +1,9 @@
 package example
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Ch08Spec extends FlatSpec with Matchers {
+class Ch08Spec extends AnyFlatSpec with Matchers {
   //initialized is concrete otherwise abstract
   "8.02" should "trait fields" in {
     trait PizzaTrait {

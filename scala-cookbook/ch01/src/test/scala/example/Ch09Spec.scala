@@ -1,9 +1,10 @@
 package example
 
 import example.otherscope.Foo
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Ch09Spec extends FlatSpec with Matchers {
+class Ch09Spec extends AnyFlatSpec with Matchers {
   "9.03" should "partially applied function" in {
     import scala.math._
 

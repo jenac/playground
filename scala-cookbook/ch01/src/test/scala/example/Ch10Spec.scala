@@ -1,11 +1,10 @@
 package example
 
-import org.scalatest.{FlatSpec, Matchers}
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scala.collection.mutable.ArrayBuffer
 
-
-class Ch10Spec extends FlatSpec with Matchers {
+class Ch10Spec extends AnyFlatSpec with Matchers {
   "10.11" should "zipWithInex and zip" in {
     val days = Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
     val zipped = days.zipWithIndex

@@ -1,12 +1,11 @@
 package example
 
 import java.io.{FileInputStream, FileNotFoundException, FileOutputStream, IOException}
-
-import org.scalatest._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scala.util.control.Breaks
 
-class Ch03Spec extends FlatSpec with Matchers {
+class Ch03Spec extends AnyFlatSpec with Matchers {
 
   it should "3.01" in {
     val a = Array("apple", "banana", "orange")

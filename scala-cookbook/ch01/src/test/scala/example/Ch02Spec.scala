@@ -1,12 +1,11 @@
 package example
 
 import java.util.Locale
-
-import org.scalatest._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scala.util.Random
 
-class Ch02Spec extends FlatSpec with Matchers {
+class Ch02Spec extends AnyFlatSpec with Matchers {
   it should "2.01" in {
     "100".toInt shouldBe 100
     "100".toDouble shouldBe 100.0

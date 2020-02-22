@@ -1,8 +1,9 @@
 package example
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Ch04Spec extends FlatSpec with Matchers {
+class Ch04Spec extends AnyFlatSpec with Matchers {
   "4.03" should "additional constructors" in {
     class Pizza(var crustSize: Int, var crustType: String) {
       def this(crustSize: Int) {
