@@ -58,4 +58,10 @@ lazy val ch1309 = (project in file("ch1309"))
     name := "ch1309",
     libraryDependencies += akka
   )
+
+lazy val ch1310 = (project in file("ch1310"))
+  .settings(
+    name := "ch1310",
+    libraryDependencies += akka
+  )
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
