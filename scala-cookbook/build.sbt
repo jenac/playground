@@ -84,4 +84,10 @@ lazy val mongotour = (project in file("mongo-tour"))
     libraryDependencies += scalaTest % Test,
     libraryDependencies += mongoDriver,
   )
+
+lazy val ch19 = (project in file("ch19"))
+  .settings(
+    name := "ch19",
+    libraryDependencies += scalaTest % Test,
+  )
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
