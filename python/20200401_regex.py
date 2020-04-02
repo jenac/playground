@@ -56,3 +56,34 @@ print(mo9.group())
 
 mo10 = haRegex.search('Wa haha')
 print(mo10)
+
+# greedy match { a, b } means a to b times
+greedyHaRegex = re.compile(r'(Ha){3,5}')
+moa = greedyHaRegex.search('What HaHaHaHaHa')
+print(moa.group()) # HaHaHaHaHa
+
+# non greedy match
+monGreedyHaRegex = re.compile(r'(Ha){3,5}?')
+mob = monGreedyHaRegex.search('What HaHaHaHaHa')
+print(mob.group()) #HaHaHa
+
+# # find all
+phoneNumberRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mc = phoneNumberRegex.findall('My cell number: 612-222-1234, home is: 612-111-7890')
+print(mc)
+
+phoneNumberRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') #group with ()
+md = phoneNumberRegex.findall('My cell number: 612-222-1234, home is: 612-111-7890')
+print(md)
+
+# https://docs.python.org/3/library/re.html
+# \d
+# \D
+# \w
+# \W
+#
+
+# customize char category
+vowelRegex = re.compile(r'[aeiouAEIOU]')
+me = vowelRegex.findall('Robocop eats baby food. BABY FOOD')
+print(me)
