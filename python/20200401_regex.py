@@ -1,4 +1,5 @@
 import re
+
 phoneNumberRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d') #r'' raw string
 mo = phoneNumberRegex.search('My cell number: 612-222-1234, home is: 612-111-7890')
 print(mo.group())
@@ -12,12 +13,14 @@ print(mo.groups())
 areaCode, mid, last = mo.groups()
 print(f"areaCode={areaCode}, mid={mid}, last={last}")
 
-#escape ( and )
+print('''--------------------
+escape ( and )''')
 phoneNumberRegex = re.compile(r'(\(\d\d\d\))-(\d\d\d-\d\d\d\d)') #group with ()
 mo = phoneNumberRegex.search('My cell number: 612-222-1234, home is: (612)-111-7890')
 print(mo.groups())
 
-#match multile
+print('''--------------------
+match multile''')
 heroRegex = re.compile(r'Batman|Tina Fey')
 mo1 = heroRegex.search('Batman and Tina Fey')
 print(mo1.group())
@@ -25,7 +28,8 @@ print(mo1.group())
 mo2 = heroRegex.search('Tina Fey and Batmain')
 print(mo2.group())
 
-# ? for optional match
+print('''--------------------
+? for optional match''')
 batRegex = re.compile(r'Bat(wo)?man')
 mo3 = batRegex.search('The Adventures of Batman')
 print(mo3.group())
@@ -33,7 +37,8 @@ print(mo3.group())
 mo4 = batRegex.search('The Adventures of Batwoman')
 print(mo4.group())
 
-# * for 0 or multiple times
+print('''--------------------
+* for 0 or multiple times''')
 batRegex = re.compile(r'Bat(wo)*man')
 mo5 = batRegex.search('The Adventures of Batman')
 print(mo5.group())
@@ -41,7 +46,8 @@ print(mo5.group())
 mo6 = batRegex.search('The Adventures of Batwowowowoman')
 print(mo6.group())
 
-# + for 1 or multiple times
+print('''--------------------
++ for 1 or multiple times''')
 batRegex = re.compile(r'Bat(wo)+man')
 mo7 = batRegex.search('The Adventures of Batman')
 print(mo7) #None no match
@@ -49,7 +55,8 @@ print(mo7) #None no match
 mo8 = batRegex.search('The Adventures of Batwowowowoman')
 print(mo8.group())
 
-# {n} for match exact n times
+print('''--------------------
+{n} for match exact n times''')
 haRegex = re.compile(r'(Ha){3}')
 mo9 = haRegex.search('Wa HaHaHa')
 print(mo9.group())
@@ -57,17 +64,20 @@ print(mo9.group())
 mo10 = haRegex.search('Wa haha')
 print(mo10)
 
-# greedy match { a, b } means a to b times
+print('''--------------------
+greedy match { a, b } means a to b times''')
 greedyHaRegex = re.compile(r'(Ha){3,5}')
 moa = greedyHaRegex.search('What HaHaHaHaHa')
 print(moa.group()) # HaHaHaHaHa
 
-# non greedy match
+print('''--------------------
+non greedy match''')
 monGreedyHaRegex = re.compile(r'(Ha){3,5}?')
 mob = monGreedyHaRegex.search('What HaHaHaHaHa')
 print(mob.group()) #HaHaHa
 
-# # find all
+print('''--------------------
+find all''')
 phoneNumberRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
 mc = phoneNumberRegex.findall('My cell number: 612-222-1234, home is: 612-111-7890')
 print(mc)
@@ -83,7 +93,55 @@ print(md)
 # \W
 #
 
-# customize char category
+print('''--------------------
+customize char category''')
 vowelRegex = re.compile(r'[aeiouAEIOU]')
 me = vowelRegex.findall('Robocop eats baby food. BABY FOOD')
 print(me)
+
+print('''--------------------
+^ for starts with''')
+beginWithRegex = re.compile(r'^How are you?')
+print(beginWithRegex.search('Jay, How are you? ...') == None)
+print(beginWithRegex.search('How are you, Jay?').group())
+
+print('''--------------------
+$ for ends with''')
+endWithRegex = re.compile(r'\d$') #end with number
+print(endWithRegex.search("I am No. 2").group())
+print(endWithRegex.search("I am No. two") == None)
+
+print('''--------------------
+. for any char except line feed''')
+atRegex = re.compile(r'.at')
+print(atRegex.findall('The cat in the hat sat at the flat mat'))
+
+print('''--------------------
+.* for any word''')
+nameRegex = re.compile(r'FirstName: (.*), LastName: (.*)')
+print(nameRegex.search('FirstName: Jen, LastName: Ac').group(1))
+print(nameRegex.search('FirstName: Jen, LastName: Ac').group(2))
+
+print('''--------------------
+.* + re.DOTALL including line feed''')
+nonNewLineRegex = re.compile('.*')
+print(nonNewLineRegex.search('Line 1\nLine 2').group())
+
+newLineRegex = re.compile('.*', re.DOTALL)
+print(newLineRegex.search('Line 1\nLine 2').group())
+
+print('''--------------------
+re.I or re.IGNORECASE to case insensitive''')
+ignoreCaseRegex = re.compile('python', re.I)
+print(ignoreCaseRegex.search('PYTHON').group())
+print(ignoreCaseRegex.search('python').group())
+print(ignoreCaseRegex.search('Python').group())
+print(ignoreCaseRegex.search('PYThon').group())
+
+print('''--------------------
+sub to replace''')
+namesRegex = re.compile(r'Agent \w+')
+print(namesRegex.sub('CENSORED', 'Agent Alice gave secret document to Agent Bob.'))
+
+agentNamesRegex = re.compile(r'Agent (\w)\w*')
+print(agentNamesRegex.sub(r'\1****', 'Agent Alice told Agent Carol that Agent Eve know Agent Bob was a double agent'))
