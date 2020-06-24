@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_app/constants.dart';
 
-
 class ProductPoster extends StatelessWidget {
   const ProductPoster({
     Key key,
-    @required this.size, this.image,
+    @required this.size,
+    this.image,
   }) : super(key: key);
 
   final Size size;
@@ -35,7 +35,6 @@ class ProductPoster extends StatelessWidget {
           ),
         ],
       ),
-
     );
   }
 }

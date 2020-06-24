@@ -12,9 +12,7 @@ class ChatAndAddToCart extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(kDefaultPadding),
       padding: EdgeInsets.symmetric(
-        horizontal: kDefaultPadding, 
-        vertical: kDefaultPadding / 2
-      ),
+          horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
       decoration: BoxDecoration(
         color: Color(0xFFFCBF1E),
         borderRadius: BorderRadius.circular(30),
@@ -26,7 +24,7 @@ class ChatAndAddToCart extends StatelessWidget {
             height: 18,
           ),
           SizedBox(
-            width: kDefaultPadding /2,
+            width: kDefaultPadding / 2,
           ),
           Text(
             "Chat",
@@ -34,7 +32,7 @@ class ChatAndAddToCart extends StatelessWidget {
           ),
           Spacer(),
           FlatButton.icon(
-            onPressed: (){}, 
+            onPressed: () {},
             icon: SvgPicture.asset(
               "assets/icons/shopping-bag.svg",
               height: 18,
@@ -49,4 +47,3 @@ class ChatAndAddToCart extends StatelessWidget {
     );
   }
 }
-

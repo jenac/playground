@@ -10,7 +10,6 @@ class ProductsScreen extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       appBar: buildAppBar(),
       body: Body(),
-      
     );
   }
 
@@ -22,7 +21,7 @@ class ProductsScreen extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset("assets/icons/notification.svg"),
-          onPressed: (){},
+          onPressed: () {},
         )
       ],
     );

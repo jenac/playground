@@ -13,45 +13,45 @@ class Body extends StatelessWidget {
       bottom: false,
       child: Column(
         children: <Widget>[
-          SearchBox(onChanged: (value) {},),
+          SearchBox(
+            onChanged: (value) {},
+          ),
           CategoryList(),
-          SizedBox(height: kDefaultPadding/2,),
+          SizedBox(
+            height: kDefaultPadding / 2,
+          ),
           Expanded(
             child: Stack(
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(top: 70),
                   decoration: BoxDecoration(
-                    color: kBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)
-                    )
-                  ),
+                      color: kBackgroundColor,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40))),
                 ),
                 ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (context, index) => ProductCard(
-                    itemIndex: index,
-                    product: products[index],
-                    press: (){
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context) => DetailsScreen(product: products[index],),
-                        ),
-                      );
-                    },
-                  )
-                )
+                    itemCount: products.length,
+                    itemBuilder: (context, index) => ProductCard(
+                          itemIndex: index,
+                          product: products[index],
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsScreen(
+                                  product: products[index],
+                                ),
+                              ),
+                            );
+                          },
+                        ))
               ],
             ),
           )
         ],
-        
       ),
     );
   }
 }
-
-

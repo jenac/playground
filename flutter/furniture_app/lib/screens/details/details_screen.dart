@@ -13,9 +13,9 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: buildAppBar(context),
-      body: Body(product: product,),
-      
-      
+      body: Body(
+        product: product,
+      ),
     );
   }
 
@@ -31,17 +31,14 @@ class DetailsScreen extends StatelessWidget {
         },
       ),
       centerTitle: false,
-      title: Text(
-        'Back'.toUpperCase(),
-        style: Theme.of(context).textTheme.bodyText2
-      ),
+      title: Text('Back'.toUpperCase(),
+          style: Theme.of(context).textTheme.bodyText2),
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset("assets/icons/cart_with_item.svg"),
-          onPressed: (){},
+          onPressed: () {},
         ),
       ],
-
     );
   }
 }

@@ -5,7 +5,6 @@ class Product {
   Product({this.id, this.price, this.title, this.description, this.image});
 }
 
-  
 // list of products
 // for our demo
 List<Product> products = [

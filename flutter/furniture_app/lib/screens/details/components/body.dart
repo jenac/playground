@@ -24,29 +24,28 @@ class Body extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
               decoration: BoxDecoration(
-                color: kBackgroundColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                )
-              ),
+                  color: kBackgroundColor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                  )),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Center(
-                    child: Hero(
-                      tag: "${product.id}",
-                      child: ProductPoster(
-                        size: size, 
-                        image: product.image,
-                      ),
-                    )
-                  ),
+                      child: Hero(
+                    tag: "${product.id}",
+                    child: ProductPoster(
+                      size: size,
+                      image: product.image,
+                    ),
+                  )),
                   ListOfColors(),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
+                    padding:
+                        EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                     child: Text(
-                      product.title, 
+                      product.title,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                   ),
@@ -59,22 +58,23 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
+                    padding:
+                        EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                     child: Text(
                       product.description,
                       style: TextStyle(color: kTextLightColor),
                     ),
                   ),
-                  SizedBox(height: kDefaultPadding,),
+                  SizedBox(
+                    height: kDefaultPadding,
+                  ),
                 ],
               ),
             ),
             ChatAndAddToCart()
           ],
-          
         ),
       ),
     );
   }
 }
-
