@@ -1,4 +1,5 @@
 import 'package:book_app/constants.dart';
+import 'package:book_app/screens/details_screen.dart';
 import 'package:book_app/widgets/book_rating.dart';
 import 'package:book_app/widgets/reading_card_list.dart';
 import 'package:book_app/widgets/two_side_rounded_button.dart';
@@ -52,7 +53,12 @@ class HomeScreen extends StatelessWidget {
                           title: "Book 1",
                           auth: "Jen Ac",
                           rating: 4.9,
-                          pressDetails: () {},
+                          pressDetails: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return DetailsScreen();
+                            }));
+                          },
                           pressRead: () {},
                         ),
                         ReadingCardList(
@@ -192,7 +198,7 @@ class HomeScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       width: double.infinity,
-      height: 205,
+      height: 245,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -202,7 +208,7 @@ class HomeScreen extends StatelessWidget {
             child: Container(
               padding:
                   EdgeInsets.only(left: 24, top: 24, right: size.width * .35),
-              height: 185,
+              height: 230,
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Color(0xFFEAEAEA).withOpacity(.45),
@@ -238,7 +244,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          "asdkjasjflasjf  asdfkjasldfjalsdfj asdf asdlfjasdfljasd asdf",
+                          "When the earth was flat and everyone wanted to win the game of the best and people….",
                           maxLines: 3,
                           style:
                               TextStyle(fontSize: 10, color: kLightBlackColor),
