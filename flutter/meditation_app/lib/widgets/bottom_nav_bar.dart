@@ -32,7 +32,6 @@ class BottomNavBar extends StatelessWidget {
             svgSrc: "assets/icons/settings.svg",
             press: () {},
           ),
-          BottomNavItem()
         ],
       ),
     );
