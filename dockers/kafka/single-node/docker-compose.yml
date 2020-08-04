@@ -45,6 +45,8 @@ services:
     image: obsidiandynamics/kafdrop
     depends_on:
       - kafka
+    ports:
+      - 9000:9000
     container_name: sn-drop
     environment: 
       KAFKA_BROKERCONNECT: 192.168.1.180:9092
