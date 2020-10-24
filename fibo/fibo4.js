@@ -1,4 +1,4 @@
-function fibo1(n) {
+function fibo(n) {
     if (n === 0) {
         return n;
     }
@@ -16,5 +16,6 @@ function fibo1(n) {
 
 
 for (let x = 0; x < 20; x++) {
-    console.log(x, fibo1(x));
+    console.log(x, fibo(x));
 }
+console.log(fibo(20)) //6795
