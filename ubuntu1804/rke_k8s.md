@@ -2,10 +2,6 @@
 
 ## Environments:
 
-| | OS | RAM | Disk |
-| -- | -- | -- |
-| Client | 
-
 |   | OS | RAM | Disk | IP |
 |---|---|---|---|---|
 | Client | WSL: Kali-linux | n/a | n/a | n/a |
@@ -21,7 +17,7 @@ sudo apt update && sudo apt upgrade -y
 sudo reboot
 ```
 
-## **The following steps are taken on the Client machine**
+## **The following steps should be taken on the Client machine**
 ## Install RKE
 ```bash
 wget https://github.com/rancher/rke/releases/download/v1.0.14/rke_linux-amd64
