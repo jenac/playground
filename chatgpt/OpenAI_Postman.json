@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "f94016b5-259d-468a-9da9-930157185f70",
+    "name": "OpenAI",
+    "schema": https: //schema.getpostman.com/json/collection/v2.1.0/collection.json
+  },
+  "item": [
+    {
+      "name": "GetModels",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": https: //api.openai.com/v1/models,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "models"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Completions",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"model\": \"text-davinci-003\", \"prompt\": \"What are the masking methods in Delphix software?\", \"temperature\": 0, \"max_tokens\": 70}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": https: //api.openai.com/v1/completions,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Completions GPT-3.5",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"model\": \"text-davinci-003\", \"prompt\": \"What are the masking methods in Delphix software?\", \"temperature\": 0, \"max_tokens\": 70}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": https: //api.openai.com/v1/completions,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edits",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"text-davinci-edit-001\",\n  \"input\": \"What day of the wek is it?\",\n  \"instruction\": \"Fix the spelling mistakes\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": https: //api.openai.com/v1/edits,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "edits"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Image",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"A cute baby boy\",\n  \"n\": 2,\n  \"size\": \"1024x1024\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": https: //api.openai.com/v1/images/generations,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "images",
+            "generations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Image Edit",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "Your OpenAI API key",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": https: //api.openai.com/v1/images/edits?image=https://oaidalleapiprodscus.blob.core.windows.net/private/org-TyIBTYfz3RKVH7HDm8vzsPBS/user-fdBDSKwZTur003krDa4WVG1F/img-AnFh4AUHyUpwJgHFPDRr27Ii.png?st=2023-02-24T12%3A04%3A06Z%26se=2023-02-24T14%3A04%3A06Z%26sp=r%26sv=2021-08-06%26sr=b%26rscd=inline%26rsct=image/png%26skoid=6aaadede-4fb3-4698-a8f6-684d7786b067%26sktid=a48cca56-e6da-484e-a814-9c849652bcb3%26skt=2023-02-23T20%3A34%3A34Z%26ske=2023-02-24T20%3A34%3A34Z%26sks=b%26skv=2021-08-06%26sig=5KOKZ4rhPZqA9DcdXjBvQMbBXvD2WeCKpGfwVROFi44%3D&mask=@mask.png&prompt=A cute baby sea otter wearing a beret&n=2&size=1024x1024,
+          "protocol": "https",
+          "host": [
+            "api",
+            "openai",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "images",
+            "edits"
+          ],
+          "query": [
+            {
+              "key": "image",
+              "value": https: //oaidalleapiprodscus.blob.core.windows.net/private/org-TyIBTYfz3RKVH7HDm8vzsPBS/user-fdBDSKwZTur003krDa4WVG1F/img-AnFh4AUHyUpwJgHFPDRr27Ii.png?st=2023-02-24T12%3A04%3A06Z&se=2023-02-24T14%3A04%3A06Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-02-23T20%3A34%3A34Z&ske=2023-02-24T20%3A34%3A34Z&sks=b&skv=2021-08-06&sig=5KOKZ4rhPZqA9DcdXjBvQMbBXvD2WeCKpGfwVROFi44%3D
+            },
+            {
+              "key": "mask",
+              "value": "@mask.png"
+            },
+            {
+              "key": "prompt",
+              "value": "A cute baby sea otter wearing a beret"
+            },
+            {
+              "key": "n",
+              "value": "2"
+            },
+            {
+              "key": "size",
+              "value": "1024x1024"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
