@@ -43,7 +43,10 @@
 
 ### 现场经验
 * 可以运行的环境
-* 不能运行的环境
+* 不能运行的环境(白板)
+    * 口述运行测试
+* 单元测试(unit test)
+* 注重交流，留心提示
 
 ### 准备好了么
 * 200题左右可以开始面试
@@ -56,8 +59,8 @@
 ## 系统设计(System Design)
 ### Books:
 * Alex Xu 的两本书
-    * [System Design Interview – An insider's guide](https://a.co/d/2qCkFNc)
-    * [System Design Interview – An Insider's Guide: Volume 2](https://www.amazon.com/dp/1736049119?_encoding=UTF8&psc=1&ref_=cm_sw_r_cp_ud_dp_S552CEX1A8X2J950ZVZZ)
+    * [System Design Interview – An insider's guide](https://a.co/d/2qCkFNc) 基础知识
+    * [System Design Interview – An Insider's Guide: Volume 2](https://www.amazon.com/dp/1736049119?_encoding=UTF8&psc=1&ref_=cm_sw_r_cp_ud_dp_S552CEX1A8X2J950ZVZZ) 典型系统的设计
 * [DDIA](https://www.amazon.com/dp/1449373321?_encoding=UTF8&psc=1&ref_=cm_sw_r_cp_ud_dp_WSFX5A0FM3KAQDRS310A) 比较难，建议先读前两本
 
 ### 开放式，没有标准答案
