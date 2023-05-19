@@ -51,6 +51,7 @@
     * 多种解决方案，比较优劣
     * 解释好你的代码
     * 数量和质量并重
+    * [一个例子](https://github.com/jenac/playground/blob/master/talks/0206.ipynb)
 
 
 ## 系统设计(System Design)
